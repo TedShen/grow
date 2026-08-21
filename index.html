@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ted ｜ 財務教練 — 讓你的錢有方向</title>
+  <meta name="description" content="Ted，財務教練。陪你看清現金流、規劃保障與退休，把錢變成一個看得懂、走得下去的計畫。" />
+
+  <!-- Open Graph：分享到 LINE / FB 時的預覽 -->
+  <meta property="og:title" content="Ted ｜ 財務教練" />
+  <meta property="og:description" content="陪你把錢變成一個看得懂、走得下去的計畫。" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://grow.tedshen.link" />
+
+  <style>
+    :root {
+      --bg: #ffffff;
+      --surface: #f5f7f6;
+      --text: #1a2420;
+      --muted: #5c6b64;
+      --brand: #1f9d6b;      /* grow 綠 */
+      --brand-dark: #157a52;
+      --line: #06c755;       /* LINE 官方綠 */
+      --border: #e2e8e4;
+      --shadow: 0 4px 24px rgba(20, 60, 40, 0.08);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0f1512;
+        --surface: #161d19;
+        --text: #eaf1ec;
+        --muted: #9fb0a8;
+        --brand: #2fbd85;
+        --brand-dark: #26a271;
+        --border: #26302b;
+        --shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+      }
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: -apple-system, "Segoe UI", "PingFang TC", "Microsoft JhengHei", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    .wrap { max-width: 680px; margin: 0 auto; padding: 0 24px; }
+    section { padding: 56px 0; }
+    h1 { font-size: 2rem; line-height: 1.3; letter-spacing: -0.01em; }
+    h2 { font-size: 1.35rem; margin-bottom: 24px; }
+    p { color: var(--muted); }
+    .brand-tag { color: var(--brand); font-weight: 700; letter-spacing: 0.05em; }
+
+    /* 按鈕 */
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 28px; border-radius: 999px;
+      font-weight: 700; font-size: 1rem; text-decoration: none;
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-line { background: var(--line); color: #fff; box-shadow: var(--shadow); }
+    .btn-ghost { background: transparent; color: var(--brand); border: 1.5px solid var(--brand); }
+
+    /* Hero */
+    .hero { padding-top: 80px; text-align: center; }
+    .hero .avatar {
+      width: 96px; height: 96px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--brand), var(--brand-dark));
+      margin: 0 auto 24px; display: flex; align-items: center;
+      justify-content: center; color: #fff; font-size: 2rem; font-weight: 700;
+    }
+    .hero p.lead { font-size: 1.1rem; margin: 16px 0 32px; }
+
+    /* 服務卡片 */
+    .cards { display: grid; gap: 16px; }
+    .card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 16px; padding: 24px;
+    }
+    .card .num { color: var(--brand); font-weight: 700; font-size: .9rem; }
+    .card h3 { font-size: 1.1rem; margin: 6px 0 8px; }
+    .card p { font-size: .95rem; }
+
+    /* 見證 */
+    .quote {
+      background: var(--surface); border-left: 4px solid var(--brand);
+      border-radius: 8px; padding: 20px 24px; margin-bottom: 16px;
+    }
+    .quote p { color: var(--text); font-style: italic; }
+    .quote .who { color: var(--muted); font-size: .85rem; font-style: normal; margin-top: 8px; }
+
+    /* 內容連結 */
+    .posts a {
+      display: block; padding: 16px 0; border-bottom: 1px solid var(--border);
+      color: var(--text); text-decoration: none;
+    }
+    .posts a:hover { color: var(--brand); }
+    .posts .date { color: var(--muted); font-size: .85rem; }
+
+    /* CTA 區塊 */
+    .cta { text-align: center; background: var(--surface); border-radius: 24px; margin: 40px 0; padding: 48px 24px; }
+    .cta h2 { margin-bottom: 12px; }
+    .cta p { margin-bottom: 28px; }
+
+    footer { text-align: center; padding: 40px 0; color: var(--muted); font-size: .85rem; }
+    footer a { color: var(--muted); }
+  </style>
+</head>
+<body>
+
+  <!-- ① Hero：數位名片 -->
+  <header class="hero wrap">
+    <div class="avatar">T</div>
+    <p class="brand-tag">GROW ｜ 財務教練</p>
+    <h1>把錢變成一個<br>看得懂、走得下去的計畫</h1>
+    <p class="lead">我是沈裕德 Ted。不推銷商品，先陪你把財務看清楚，<br>再一起決定下一步怎麼走。</p>
+    <a class="btn btn-line" href="#" data-line-link>加我的 LINE，聊聊你的狀況 →</a>
+  </header>
+
+  <!-- ② 服務：你能幫客戶解決什麼 -->
+  <section class="wrap">
+    <h2>我可以陪你做這三件事</h2>
+    <div class="cards">
+      <div class="card">
+        <div class="num">01</div>
+        <h3>現金流體檢</h3>
+        <p>錢每個月從哪裡來、往哪裡去？先把收支和資產攤開，看清楚全貌，焦慮通常就少一半。</p>
+      </div>
+      <div class="card">
+        <div class="num">02</div>
+        <h3>保障規劃</h3>
+        <p>檢視現有保單，補足真正的缺口，不多買、不亂買，讓保障對得起你付出的保費。</p>
+      </div>
+      <div class="card">
+        <div class="num">03</div>
+        <h3>退休與目標試算</h3>
+        <p>買房、教育金、退休金——把模糊的「以後」變成有數字、有步驟的計畫。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ③ 見證 -->
+  <section class="wrap">
+    <h2>他們後來怎麼說</h2>
+    <!-- TODO：換成真實見證，一則就有說服力，寧真勿多 -->
+    <div class="quote">
+      <p>「原本以為又是要來賣保險的，結果 Ted 先花一小時幫我把帳算清楚，我才知道問題不在保險。」</p>
+      <div class="who">— 王小姐，34 歲，上班族</div>
+    </div>
+    <div class="quote">
+      <p>「他不會逼你，就是把選項講清楚讓你自己決定，這種踏實感很難得。」</p>
+      <div class="who">— 陳先生，41 歲，小型企業主</div>
+    </div>
+  </section>
+
+  <!-- ④ 最新內容：內容基地入口 -->
+  <section class="wrap posts">
+    <h2>最新分享</h2>
+    <!-- TODO：之後有寫文章就往這裡加連結；還沒有可先隱藏這一段 -->
+    <a href="#">
+      <div>先別急著買保險，先問自己這三個問題</div>
+      <div class="date">即將發布</div>
+    </a>
+    <a href="#">
+      <div>月薪 5 萬，怎麼開始存到第一桶金？</div>
+      <div class="date">即將發布</div>
+    </a>
+    <a href="#">
+      <div>看懂你的保單：那些業務沒告訴你的欄位</div>
+      <div class="date">即將發布</div>
+    </a>
+  </section>
+
+  <!-- ⑤ 最終 CTA：預約落地 -->
+  <section class="wrap">
+    <div class="cta">
+      <h2>第一次諮詢，免費</h2>
+      <p>一杯咖啡的時間，先把你的財務狀況聊清楚。<br>沒有壓力，不聊也沒關係。</p>
+      <a class="btn btn-line" href="#" data-line-link>加 LINE 預約諮詢</a>
+    </div>
+  </section>
+
+  <footer class="wrap">
+    <p>Ted ｜ 財務教練 · grow.tedshen.link</p>
+    <p style="margin-top:8px;">聯絡：<a href="mailto:ted@tedshen.link">ted@tedshen.link</a></p>
+  </footer>
+
+  <script>
+    // 之後拿到 LINE 官方帳號連結後，把下面這行的網址換掉，全站按鈕會一起更新
+    var LINE_URL = "https://lin.ee/TWsPv3R";
+    document.querySelectorAll('[data-line-link]').forEach(function (a) {
+      a.setAttribute('href', LINE_URL);
+    });
+  </script>
+
+</body>
+</html>
