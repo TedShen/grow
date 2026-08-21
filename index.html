@@ -83,6 +83,21 @@
     .card h3 { font-size: 1.1rem; margin: 6px 0 8px; }
     .card p { font-size: .95rem; }
 
+    /* 分區標籤與進階區 */
+    .zone-label {
+      display: inline-block; color: var(--brand); font-weight: 700;
+      font-size: .8rem; letter-spacing: .08em; margin-bottom: 6px;
+    }
+    .zone-intro { margin-bottom: 20px; }
+    .zone-intro strong { color: var(--text); }
+    .pill-list { list-style: none; display: grid; gap: 12px; }
+    .pill-list li {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 12px; padding: 16px 20px; color: var(--text);
+      font-weight: 600; font-size: .98rem;
+    }
+    .zone-note { margin-top: 20px; font-size: .95rem; }
+
     /* 見證 */
     .quote {
       background: var(--surface); border-left: 4px solid var(--brand);
@@ -114,31 +129,45 @@
   <header class="hero wrap">
     <div class="avatar">T</div>
     <p class="brand-tag">GROW ｜ 財務教練</p>
-    <h1>把錢變成一個<br>看得懂、走得下去的計畫</h1>
-    <p class="lead">我是沈裕德 Ted。不推銷商品，先陪你把財務看清楚，<br>再一起決定下一步怎麼走。</p>
+    <h1>讓你的錢和資產<br>開始有方向、動起來</h1>
+    <p class="lead">我是沈裕德 Ted。買房、房貸、資產活化、投資理財——<br>不急著推你買什麼，先陪你把整體財務看清楚，再決定下一步。</p>
     <a class="btn btn-line" href="#" data-line-link>加我的 LINE，聊聊你的狀況 →</a>
   </header>
 
-  <!-- ② 服務：你能幫客戶解決什麼 -->
+  <!-- ② 服務 Zone 1：個人 / 家庭 -->
   <section class="wrap">
-    <h2>我可以陪你做這三件事</h2>
+    <p class="zone-label">給想理財、買房的你</p>
+    <h2>個人與家庭，我可以這樣陪你</h2>
     <div class="cards">
       <div class="card">
         <div class="num">01</div>
-        <h3>現金流體檢</h3>
-        <p>錢每個月從哪裡來、往哪裡去？先把收支和資產攤開，看清楚全貌，焦慮通常就少一半。</p>
+        <h3>買房 & 房貸規劃</h3>
+        <p>第一次買房不知道從何算起？或是想做房貸轉貸、增貸活化資金？從能力評估到方案比較，陪你算清楚再決定。</p>
       </div>
       <div class="card">
         <div class="num">02</div>
-        <h3>保障規劃</h3>
-        <p>檢視現有保單，補足真正的缺口，不多買、不亂買，讓保障對得起你付出的保費。</p>
+        <h3>投資理財 & 財務諮商</h3>
+        <p>手上有一筆錢想讓它有效運用，卻不知道怎麼配置？先把目標和風險攤開，做出你看得懂、睡得著的規劃。</p>
       </div>
       <div class="card">
         <div class="num">03</div>
-        <h3>退休與目標試算</h3>
-        <p>買房、教育金、退休金——把模糊的「以後」變成有數字、有步驟的計畫。</p>
+        <h3>保障規劃</h3>
+        <p>我具備保險證照。保險是安全網、不是主角——健檢現有保單，補真正的缺口，不多買、不亂買。</p>
       </div>
     </div>
+  </section>
+
+  <!-- ② 服務 Zone 2：地主 / 企業主（進階，簡短） -->
+  <section class="wrap">
+    <p class="zone-label">給有資產或事業的你</p>
+    <h2>資產與事業，放大它的價值</h2>
+    <p class="zone-intro">如果你手上有房、有地，或有一門生意想成長，我背後有 <strong>富足家機構</strong> 的整合平台可以對接更大的案子：</p>
+    <ul class="pill-list">
+      <li>資產活化 — 讓閒置的房產／土地產生效益</li>
+      <li>危老都更・建商合夥・土地開發合建</li>
+      <li>新創育成孵化・商業模式資源整合</li>
+    </ul>
+    <p class="zone-note">這類合作案量身評估、一對一談最清楚，歡迎直接加 LINE 聊你的狀況。</p>
   </section>
 
   <!-- ③ 見證 -->
@@ -146,8 +175,8 @@
     <h2>他們後來怎麼說</h2>
     <!-- TODO：換成真實見證，一則就有說服力，寧真勿多 -->
     <div class="quote">
-      <p>「原本以為又是要來賣保險的，結果 Ted 先花一小時幫我把帳算清楚，我才知道問題不在保險。」</p>
-      <div class="who">— 王小姐，34 歲，上班族</div>
+      <p>「本來只是想問房貸，結果 Ted 幫我把整個買房的錢怎麼配算清楚，我才敢下決定。」</p>
+      <div class="who">— 王小姐，34 歲，首購族</div>
     </div>
     <div class="quote">
       <p>「他不會逼你，就是把選項講清楚讓你自己決定，這種踏實感很難得。」</p>
@@ -160,15 +189,15 @@
     <h2>最新分享</h2>
     <!-- TODO：之後有寫文章就往這裡加連結；還沒有可先隱藏這一段 -->
     <a href="#">
-      <div>先別急著買保險，先問自己這三個問題</div>
+      <div>第一次買房，頭期款和房貸該怎麼抓？</div>
       <div class="date">即將發布</div>
     </a>
     <a href="#">
-      <div>月薪 5 萬，怎麼開始存到第一桶金？</div>
+      <div>房貸轉貸、增貸：什麼情況下真的划算？</div>
       <div class="date">即將發布</div>
     </a>
     <a href="#">
-      <div>看懂你的保單：那些業務沒告訴你的欄位</div>
+      <div>手上有閒置的房或地，可以怎麼活化？</div>
       <div class="date">即將發布</div>
     </a>
   </section>
