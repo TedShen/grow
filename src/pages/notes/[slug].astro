@@ -1,0 +1,48 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import FooterCTA from '../../components/FooterCTA.astro';
+
+export async function getStaticPaths() {
+  const notes = (await getCollection('notes')).filter((p) => !p.data.draft);
+  return notes.map((note) => ({ params: { slug: note.id }, props: { note } }));
+}
+
+const { note } = Astro.props;
+const { Content } = await render(note);
+const { title, description, pubDate, updatedDate, category, tags } = note.data;
+
+// 保險學習分類：頂端放合規聲明，且頁尾不放 LINE 招攬 CTA
+const isInsurance = category === '保險學習';
+
+const fmt = (d: Date) =>
+  d.toLocaleDateString('zh-TW', { year: 'numeric', month: 'long', day: 'numeric' });
+---
+
+<Base title={`${title} ｜ Notes`} description={description} path={`/notes/${note.id}`}>
+  <article class="wrap prose" style="padding-top:80px;">
+    {
+      isInsurance && (
+        <p class="compliance-note">
+          本文為個人學習紀錄，非保險商品招攬。詳見 <a href="/disclaimer">免責聲明</a>。
+        </p>
+      )
+    }
+
+    <p class="post-meta">
+      <span class="tag">{category}</span>
+      {fmt(pubDate)}
+      {updatedDate && `・更新於 ${fmt(updatedDate)}`}
+    </p>
+    <h1>{title}</h1>
+    {tags.length > 0 && <p class="post-meta">{tags.map((t) => <span class="tag">#{t}</span>)}</p>}
+
+    <div style="margin-top:32px;">
+      <Content />
+    </div>
+
+    <p style="margin-top:40px;"><a class="back-link" href="/notes">← 回 Notes 列表</a></p>
+  </article>
+
+  <FooterCTA variant="notes" />
+</Base>

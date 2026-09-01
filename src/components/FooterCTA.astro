@@ -1,0 +1,32 @@
+---
+import { LINE_URL } from '../consts';
+
+interface Props {
+  /**
+   * blog  → 顯示 LINE 諮詢 CTA（主線／獲客）
+   * notes → 只顯示回列表 / RSS，不放任何招攬（保險合規）
+   */
+  variant: 'blog' | 'notes';
+}
+
+const { variant } = Astro.props;
+---
+
+{
+  variant === 'blog' ? (
+    <section class="wrap">
+      <div class="cta">
+        <h2>想聊聊你的狀況？</h2>
+        <p>第一次諮詢免費，一杯咖啡的時間把財務聊清楚。<br />沒有壓力，不聊也沒關係。</p>
+        <a class="btn btn-line" href={LINE_URL}>加 LINE 預約諮詢 →</a>
+      </div>
+    </section>
+  ) : (
+    <section class="wrap">
+      <div class="cta">
+        <p style="margin-bottom:20px;">本區為個人學習紀錄。</p>
+        <a class="btn btn-ghost" href="/notes">← 回 Notes 列表</a>
+      </div>
+    </section>
+  )
+}

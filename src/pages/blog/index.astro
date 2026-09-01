@@ -1,0 +1,43 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+
+const posts = (await getCollection('blog'))
+  .filter((p) => !p.data.draft)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const fmt = (d: Date) =>
+  d.toLocaleDateString('zh-TW', { year: 'numeric', month: 'long', day: 'numeric' });
+---
+
+<Base
+  title="部落格 ｜ Ted 財務教練"
+  description="買房與房貸、資產活化、財務規劃——工程師出身的財務教練，寫給正在做決定的你。"
+  path="/blog"
+>
+  <section class="wrap" style="padding-top:80px;">
+    <p class="zone-label">主線內容</p>
+    <h1>部落格</h1>
+    <p class="lead" style="margin:12px 0 32px;">買房與房貸・資產活化・財務規劃</p>
+
+    <div class="posts">
+      {
+        posts.length === 0 ? (
+          <p>文章即將發布，敬請期待。</p>
+        ) : (
+          posts.map((post) => (
+            <a href={`/blog/${post.id}`}>
+              <div>
+                <span class="tag">{post.data.category}</span>
+                {post.data.title}
+              </div>
+              <div class="date">{fmt(post.data.pubDate)}</div>
+            </a>
+          ))
+        )
+      }
+    </div>
+
+    <p style="margin-top:32px;"><a class="back-link" href="/">← 回首頁</a></p>
+  </section>
+</Base>

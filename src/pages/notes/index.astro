@@ -1,0 +1,54 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+
+const notes = (await getCollection('notes'))
+  .filter((p) => !p.data.draft)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const hasInsurance = notes.some((n) => n.data.category === '保險學習');
+
+const fmt = (d: Date) =>
+  d.toLocaleDateString('zh-TW', { year: 'numeric', month: 'long', day: 'numeric' });
+---
+
+<Base
+  title="Notes ｜ Ted 財務教練"
+  description="個人學習紀錄：能量學、軟體與工程、保險學習。工程師出身的財務教練的側寫。"
+  path="/notes"
+>
+  <section class="wrap" style="padding-top:80px;">
+    <p class="zone-label">副線・個人學習紀錄</p>
+    <h1>Notes</h1>
+    <p class="lead" style="margin:12px 0 24px;">能量學・軟體與工程・保險學習</p>
+
+    {
+      hasInsurance && (
+        <p class="compliance-note">
+          本區保險相關內容為個人學習紀錄，非保險商品招攬。詳見{' '}
+          <a href="/disclaimer">免責聲明</a>。
+        </p>
+      )
+    }
+
+    <div class="posts">
+      {
+        notes.length === 0 ? (
+          <p>紀錄即將發布。</p>
+        ) : (
+          notes.map((note) => (
+            <a href={`/notes/${note.id}`}>
+              <div>
+                <span class="tag">{note.data.category}</span>
+                {note.data.title}
+              </div>
+              <div class="date">{fmt(note.data.pubDate)}</div>
+            </a>
+          ))
+        )
+      }
+    </div>
+
+    <p style="margin-top:32px;"><a class="back-link" href="/">← 回首頁</a></p>
+  </section>
+</Base>

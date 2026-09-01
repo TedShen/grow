@@ -1,0 +1,37 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import FooterCTA from '../../components/FooterCTA.astro';
+
+export async function getStaticPaths() {
+  const posts = (await getCollection('blog')).filter((p) => !p.data.draft);
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const { title, description, pubDate, updatedDate, category, tags } = post.data;
+
+const fmt = (d: Date) =>
+  d.toLocaleDateString('zh-TW', { year: 'numeric', month: 'long', day: 'numeric' });
+---
+
+<Base title={`${title} ｜ Ted 財務教練`} description={description} path={`/blog/${post.id}`}>
+  <article class="wrap prose" style="padding-top:80px;">
+    <p class="post-meta">
+      <span class="tag">{category}</span>
+      {fmt(pubDate)}
+      {updatedDate && `・更新於 ${fmt(updatedDate)}`}
+    </p>
+    <h1>{title}</h1>
+    {tags.length > 0 && <p class="post-meta">{tags.map((t) => <span class="tag">#{t}</span>)}</p>}
+
+    <div style="margin-top:32px;">
+      <Content />
+    </div>
+
+    <p style="margin-top:40px;"><a class="back-link" href="/blog">← 回部落格列表</a></p>
+  </article>
+
+  <FooterCTA variant="blog" />
+</Base>
