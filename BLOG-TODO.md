@@ -39,9 +39,20 @@
   - 刻意不放 OneDrive。舊的 `C:\Users\Ted\OneDrive\12_TrustView_Company\00_MyOwn\everrich` 先留著別刪
 - **環境注意**：目前最新 Astro 為 **7.x**。下面 Step 4 已按 Astro 7 的 Content Layer API 改寫，勿再用舊 `type: 'content'` 寫法。
 
-### 待辦起點
+### 建置進度（2026-09-01 已完成）
 
-Astro 尚未初始化。目前 repo 還是單一 `index.html`。
+Astro 7 已初始化並上線。Step 1–7 骨架全部完成：
+
+- ✅ Astro 7.2.10 初始化（minimal 樣板），`CNAME` 已進 `public/`
+- ✅ `index.html` 拆成 `Base.astro` + `index.astro`；LINE 連結改成 `src/consts.ts` build 時 render
+- ✅ Content Collections（Content Layer API）：`blog`（主線）+ `notes`（副線）
+- ✅ 路由：`/blog`、`/blog/[slug]`、`/notes`、`/notes/[slug]`、`/disclaimer`
+- ✅ 合規：保險 notes 文章顯示免責聲明、頁尾不放 LINE CTA（`FooterCTA` 的 `variant` prop）
+- ✅ SEO/RSS：`@astrojs/sitemap`、`/rss.xml`（僅 blog）、`site` 已設
+- ✅ 部署：GitHub Actions（`withastro/action`），Pages Source 已切成 GitHub Actions
+- 範例文章各一篇（`why-engineer-to-coach`、`insurance-learning-note`），Ted 可改寫或刪除
+
+**接下來 Ted 要做的**：寫第一批正式文章（見第五節）、`/about` 頁、頭像換照片。
 
 ---
 
