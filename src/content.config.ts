@@ -15,7 +15,7 @@ const base = z.object({
 const blog = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/blog' }),
   schema: base.extend({
-    category: z.enum(['買房與房貸', '資產活化', '財務規劃']),
+    category: z.enum(['資產活化', '財務規劃']),
   }),
 });
 
