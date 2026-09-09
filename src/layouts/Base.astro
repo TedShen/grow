@@ -8,6 +8,8 @@ interface Props {
   ogDescription?: string;
   /** 相對路徑，例如 "/blog"。用來組 og:url 與 canonical。 */
   path?: string;
+  /** 分享預覽圖，相對路徑；預設用正裝頭像。之後有 1200×630 專圖再換。 */
+  image?: string;
 }
 
 const {
@@ -16,9 +18,11 @@ const {
   ogTitle,
   ogDescription,
   path = '/',
+  image = '/avatar.jpg',
 } = Astro.props;
 
 const canonical = new URL(path, SITE_URL).href;
+const ogImage = new URL(image, SITE_URL).href;
 ---
 
 <!DOCTYPE html>
@@ -38,6 +42,9 @@ const canonical = new URL(path, SITE_URL).href;
     <meta property="og:description" content={ogDescription ?? description} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content={ogImage} />
 
     <style is:global>
       :root {

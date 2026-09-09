@@ -11,4 +11,4 @@ export const FORM_URL = 'https://forms.gle/GiRtwnPKxajizTHd6';
 
 // 預設 OG／meta 描述（單頁可覆寫）
 export const SITE_DESCRIPTION =
-  'Ted，財務教練。陪你看清現金流、規劃保障與退休，把錢變成一個看得懂、走得下去的計畫。';
+  '沈裕德 Ted，軟體工程師出身的財務教練。不推銷，先陪你把資產活化、投資理財與整體財務看清楚，再決定下一步。';

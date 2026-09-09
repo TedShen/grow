@@ -1,13 +1,21 @@
 ---
 import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
 import { LINE_URL } from '../consts';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
+
+const fmt = (d: Date) =>
+  d.toLocaleDateString('zh-TW', { year: 'numeric', month: 'long', day: 'numeric' });
 ---
 
 <Base
   title="Ted ｜ 財務教練 — 讓你的錢有方向"
-  description="Ted，財務教練。陪你看清現金流、規劃保障與退休，把錢變成一個看得懂、走得下去的計畫。"
+  description="沈裕德 Ted，軟體工程師出身的財務教練。不推銷，先陪你把資產活化、投資理財與整體財務看清楚，再決定下一步。"
   ogTitle="Ted ｜ 財務教練"
-  ogDescription="陪你把錢變成一個看得懂、走得下去的計畫。"
+  ogDescription="軟體工程師出身的財務教練。不推銷，先把事情講清楚。"
   path="/"
 >
   <!-- ① Hero：數位名片 -->
@@ -60,17 +68,18 @@ import { LINE_URL } from '../consts';
     </div>
   </section>
 
-  <!-- ④ 最新內容：內容基地入口 -->
+  <!-- ④ 最新內容：內容基地入口（自動抓最新三篇，非草稿） -->
   <section class="wrap posts">
     <h2>最新分享</h2>
-    <a href="/blog">
-      <div>你知道通膨影響多大嗎？</div>
-      <div class="date">即將發布</div>
-    </a>
-    <a href="/blog">
-      <div>你知道房子是怎麼蓋起來的嗎？</div>
-      <div class="date">即將發布</div>
-    </a>
+    {
+      posts.map((post) => (
+        <a href={`/blog/${post.id}/`}>
+          <div>{post.data.title}</div>
+          <div class="date">{fmt(post.data.pubDate)}</div>
+        </a>
+      ))
+    }
+    <p style="margin-top:20px;"><a href="/blog" style="color:var(--brand);">看全部文章 →</a></p>
   </section>
 
   <!-- ⑤ 最終 CTA：預約落地 -->
