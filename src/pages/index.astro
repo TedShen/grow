@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import { getCollection } from 'astro:content';
 import { LINE_URL } from '../consts';
+import OfficialChannels from '../components/OfficialChannels.astro';
 
 const posts = (await getCollection('blog', ({ data }) => !data.draft))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
@@ -82,7 +83,10 @@ const fmt = (d: Date) =>
     <p style="margin-top:20px;"><a href="/blog" style="color:var(--brand);">看全部文章 →</a></p>
   </section>
 
-  <!-- ⑤ 最終 CTA：預約落地 -->
+  <!-- ⑤ 官方管道與防冒用聲明 -->
+  <OfficialChannels />
+
+  <!-- ⑥ 最終 CTA：預約落地 -->
   <section class="wrap">
     <div class="cta">
       <h2>第一次諮詢，免費</h2>
