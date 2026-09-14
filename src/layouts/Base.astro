@@ -8,7 +8,7 @@ interface Props {
   ogDescription?: string;
   /** 相對路徑，例如 "/blog/"。用來組 og:url 與 canonical；沒尾斜線會自動補。 */
   path?: string;
-  /** 分享預覽圖，相對路徑；預設用正裝頭像。之後有 1200×630 專圖再換。 */
+  /** 分享預覽圖，相對路徑；預設 /og.jpg（1200×630）。單篇文章有專圖時可覆寫。 */
   image?: string;
   /** 文章頁傳 'article'，其餘預設 'website'。 */
   type?: 'website' | 'article';
@@ -26,7 +26,7 @@ const {
   ogTitle,
   ogDescription,
   path = '/',
-  image = '/avatar.jpg',
+  image = '/og.jpg',
   type = 'website',
   publishedTime,
   modifiedTime,
@@ -76,6 +76,13 @@ const schemas = [
     <meta property="og:type" content={type} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={ogImage} />
+    {image === '/og.jpg' && (
+      <>
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+      </>
+    )}
+    <meta property="og:image:alt" content={`${PERSON.name} ${PERSON.alternateName}，${PERSON.jobTitle}`} />
     <meta property="og:site_name" content={SITE_NAME} />
     <meta property="og:locale" content="zh_TW" />
     {type === 'article' && publishedTime && (

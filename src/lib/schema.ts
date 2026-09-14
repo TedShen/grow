@@ -59,7 +59,7 @@ export function articleSchema(a: ArticleInput) {
     mainEntityOfPage: { '@type': 'WebPage', '@id': url },
     headline: a.title,
     description: a.description,
-    image: abs(a.image ?? PERSON.image),
+    image: abs(a.image ?? '/og.jpg'),
     datePublished: a.pubDate.toISOString(),
     dateModified: (a.updatedDate ?? a.pubDate).toISOString(),
     author,
