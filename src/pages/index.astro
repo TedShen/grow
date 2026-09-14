@@ -3,6 +3,7 @@ import Base from '../layouts/Base.astro';
 import { getCollection } from 'astro:content';
 import { LINE_URL } from '../consts';
 import OfficialChannels from '../components/OfficialChannels.astro';
+import { personSchema, websiteSchema } from '../lib/schema';
 
 const posts = (await getCollection('blog', ({ data }) => !data.draft))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
@@ -18,6 +19,7 @@ const fmt = (d: Date) =>
   ogTitle="Ted ｜ 財務教練"
   ogDescription="軟體工程師出身的財務教練。不推銷，先把事情講清楚。"
   path="/"
+  schema={[personSchema(), websiteSchema()]}
 >
   <!-- ① Hero：數位名片 -->
   <header class="hero wrap">
@@ -80,7 +82,7 @@ const fmt = (d: Date) =>
         </a>
       ))
     }
-    <p style="margin-top:20px;"><a href="/blog" style="color:var(--brand);">看全部文章 →</a></p>
+    <p style="margin-top:20px;"><a href="/blog/" style="color:var(--brand);">看全部文章 →</a></p>
   </section>
 
   <!-- ⑤ 官方管道與防冒用聲明 -->

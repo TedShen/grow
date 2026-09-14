@@ -2,6 +2,7 @@
 import { getCollection, render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import FooterCTA from '../../components/FooterCTA.astro';
+import { articleSchema } from '../../lib/schema';
 
 export async function getStaticPaths() {
   const posts = (await getCollection('blog')).filter((p) => !p.data.draft);
@@ -16,12 +17,21 @@ const fmt = (d: Date) =>
   d.toLocaleDateString('zh-TW', { year: 'numeric', month: 'long', day: 'numeric' });
 ---
 
-<Base title={`${title} ｜ Ted 財務教練`} description={description} path={`/blog/${post.id}`}>
+<Base
+  title={`${title} ｜ Ted 財務教練`}
+  description={description}
+  path={`/blog/${post.id}/`}
+  type="article"
+  publishedTime={pubDate}
+  modifiedTime={updatedDate}
+  breadcrumbs={[{ name: '部落格', path: '/blog/' }, { name: title, path: `/blog/${post.id}/` }]}
+  schema={articleSchema({ title, description, path: `/blog/${post.id}/`, pubDate, updatedDate, tags, category })}
+>
   <article class="wrap prose" style="padding-top:80px;">
     <p class="post-meta">
       <span class="tag">{category}</span>
-      {fmt(pubDate)}
-      {updatedDate && `・更新於 ${fmt(updatedDate)}`}
+      <time datetime={pubDate.toISOString().slice(0, 10)}>{fmt(pubDate)}</time>
+      {updatedDate && <>・更新於 <time datetime={updatedDate.toISOString().slice(0, 10)}>{fmt(updatedDate)}</time></>}
     </p>
     <h1>{title}</h1>
     {tags.length > 0 && <p class="post-meta">{tags.map((t) => <span class="tag">#{t}</span>)}</p>}
@@ -30,7 +40,7 @@ const fmt = (d: Date) =>
       <Content />
     </div>
 
-    <p style="margin-top:40px;"><a class="back-link" href="/blog">← 回部落格列表</a></p>
+    <p style="margin-top:40px;"><a class="back-link" href="/blog/">← 回部落格列表</a></p>
   </article>
 
   <FooterCTA variant="blog" />

@@ -5,7 +5,8 @@ import Base from '../layouts/Base.astro';
 <Base
   title="免責聲明 ｜ Ted 財務教練"
   description="grow.tedshen.link 網站內容性質與免責聲明。"
-  path="/disclaimer"
+  path="/disclaimer/"
+  breadcrumbs={[{ name: '免責聲明', path: '/disclaimer/' }]}
 >
   <article class="wrap prose" style="padding-top:80px;">
     <h1>免責聲明</h1>
@@ -17,7 +18,7 @@ import Base from '../layouts/Base.astro';
 
     <h2>保險相關內容</h2>
     <p>
-      本網站 <a href="/notes">Notes</a> 區之保險相關文章，皆為個人學習紀錄，<strong>非保險商品之招攬或銷售</strong>。內容不涉及特定商品、保費試算或各家比較。任何保險規劃請以合格從業人員之正式說明與保單條款為準。
+      本網站 <a href="/notes/">Notes</a> 區之保險相關文章，皆為個人學習紀錄，<strong>非保險商品之招攬或銷售</strong>。內容不涉及特定商品、保費試算或各家比較。任何保險規劃請以合格從業人員之正式說明與保單條款為準。
     </p>
 
     <h2>投資與財務內容</h2>

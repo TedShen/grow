@@ -1,15 +1,23 @@
 ---
-import { SITE_NAME, SITE_URL, SITE_DESCRIPTION } from '../consts';
+import { SITE_NAME, SITE_URL, SITE_DESCRIPTION, PERSON, EMAIL } from '../consts';
 
 interface Props {
   title?: string;
   description?: string;
   ogTitle?: string;
   ogDescription?: string;
-  /** 相對路徑，例如 "/blog"。用來組 og:url 與 canonical。 */
+  /** 相對路徑，例如 "/blog/"。用來組 og:url 與 canonical；沒尾斜線會自動補。 */
   path?: string;
   /** 分享預覽圖，相對路徑；預設用正裝頭像。之後有 1200×630 專圖再換。 */
   image?: string;
+  /** 文章頁傳 'article'，其餘預設 'website'。 */
+  type?: 'website' | 'article';
+  publishedTime?: Date;
+  modifiedTime?: Date;
+  /** 麵包屑，不含首頁（會自動加在最前面）。例：[{ name: '部落格', path: '/blog/' }] */
+  breadcrumbs?: { name: string; path: string }[];
+  /** 額外 JSON-LD（Person、BlogPosting 等），見 src/lib/schema.ts。 */
+  schema?: Record<string, unknown> | Record<string, unknown>[];
 }
 
 const {
@@ -19,10 +27,35 @@ const {
   ogDescription,
   path = '/',
   image = '/avatar.jpg',
+  type = 'website',
+  publishedTime,
+  modifiedTime,
+  breadcrumbs = [],
+  schema,
 } = Astro.props;
 
-const canonical = new URL(path, SITE_URL).href;
+// GitHub Pages 實際服務的是 /path/，沒尾斜線的網址會 301。canonical 必須指向最終網址。
+const withSlash = (p: string) => (p.endsWith('/') ? p : `${p}/`);
+const canonical = new URL(withSlash(path), SITE_URL).href;
 const ogImage = new URL(image, SITE_URL).href;
+
+const breadcrumbLd =
+  breadcrumbs.length > 0
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [{ name: '首頁', path: '/' }, ...breadcrumbs].map((b, i) => ({
+          '@type': 'ListItem',
+          position: i + 1,
+          name: b.name,
+          item: new URL(withSlash(b.path), SITE_URL).href,
+        })),
+      }
+    : null;
+const schemas = [
+  ...(Array.isArray(schema) ? schema : schema ? [schema] : []),
+  ...(breadcrumbLd ? [breadcrumbLd] : []),
+];
 ---
 
 <!DOCTYPE html>
@@ -40,11 +73,27 @@ const ogImage = new URL(image, SITE_URL).href;
     <!-- Open Graph：分享到 LINE / FB 時的預覽 -->
     <meta property="og:title" content={ogTitle ?? title} />
     <meta property="og:description" content={ogDescription ?? description} />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={type} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={ogImage} />
+    <meta property="og:site_name" content={SITE_NAME} />
+    <meta property="og:locale" content="zh_TW" />
+    {type === 'article' && publishedTime && (
+      <meta property="article:published_time" content={publishedTime.toISOString()} />
+    )}
+    {type === 'article' && modifiedTime && (
+      <meta property="article:modified_time" content={modifiedTime.toISOString()} />
+    )}
+    {type === 'article' && <meta property="article:author" content={PERSON.name} />}
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={ogTitle ?? title} />
+    <meta name="twitter:description" content={ogDescription ?? description} />
     <meta name="twitter:image" content={ogImage} />
+
+    <!-- 結構化資料：Person / WebSite / BlogPosting / BreadcrumbList，由各頁透過 props 傳入 -->
+    {schemas.map((s) => (
+      <script type="application/ld+json" set:html={JSON.stringify(s)} />
+    ))}
 
     <style is:global>
       :root {
@@ -185,8 +234,11 @@ const ogImage = new URL(image, SITE_URL).href;
     <slot />
 
     <footer class="wrap">
+      <nav aria-label="網站導覽" style="margin-bottom:12px;">
+        <a href="/">首頁</a> · <a href="/blog/">部落格</a> · <a href="/notes/">Notes</a> · <a href="/disclaimer/">免責聲明</a>
+      </nav>
       <p>Ted ｜ 財務教練 · grow.tedshen.link</p>
-      <p style="margin-top:8px;">聯絡：<a href="mailto:ted@tedshen.link">ted@tedshen.link</a></p>
+      <p style="margin-top:8px;">聯絡：<a href={`mailto:${EMAIL}`}>{EMAIL}</a></p>
     </footer>
   </body>
 </html>

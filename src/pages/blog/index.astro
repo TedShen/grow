@@ -13,7 +13,8 @@ const fmt = (d: Date) =>
 <Base
   title="部落格 ｜ Ted 財務教練"
   description="資產活化、財務規劃——工程師出身的財務教練，寫給正在做決定的你。"
-  path="/blog"
+  path="/blog/"
+  breadcrumbs={[{ name: '部落格', path: '/blog/' }]}
 >
   <section class="wrap" style="padding-top:80px;">
     <p class="zone-label">主線內容</p>
@@ -26,7 +27,7 @@ const fmt = (d: Date) =>
           <p>文章即將發布，敬請期待。</p>
         ) : (
           posts.map((post) => (
-            <a href={`/blog/${post.id}`}>
+            <a href={`/blog/${post.id}/`}>
               <div>
                 <span class="tag">{post.data.category}</span>
                 {post.data.title}

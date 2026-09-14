@@ -12,3 +12,17 @@ export const FORM_URL = 'https://forms.gle/GiRtwnPKxajizTHd6';
 // 預設 OG／meta 描述（單頁可覆寫）
 export const SITE_DESCRIPTION =
   '沈裕德 Ted，軟體工程師出身的財務教練。不推銷，先陪你把資產活化、投資理財與整體財務看清楚，再決定下一步。';
+
+// 官方社群管道（官方管道區塊與 JSON-LD Person.sameAs 共用，改這裡兩邊一起變）
+export const THREADS_URL = 'https://www.threads.com/@tedshen.grow';
+export const INSTAGRAM_URL = 'https://www.instagram.com/tedshen.grow';
+export const EMAIL = 'ted@tedshen.link';
+
+// 站主資料（JSON-LD Person / Article author 用）
+export const PERSON = {
+  name: '沈裕德',
+  alternateName: 'Ted Shen',
+  jobTitle: '財務教練',
+  image: '/avatar.jpg',
+  sameAs: [THREADS_URL, INSTAGRAM_URL, LINE_URL],
+};

@@ -2,6 +2,7 @@
 import { getCollection, render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import FooterCTA from '../../components/FooterCTA.astro';
+import { articleSchema } from '../../lib/schema';
 
 export async function getStaticPaths() {
   const notes = (await getCollection('notes')).filter((p) => !p.data.draft);
@@ -19,20 +20,29 @@ const fmt = (d: Date) =>
   d.toLocaleDateString('zh-TW', { year: 'numeric', month: 'long', day: 'numeric' });
 ---
 
-<Base title={`${title} ｜ Notes`} description={description} path={`/notes/${note.id}`}>
+<Base
+  title={`${title} ｜ Notes`}
+  description={description}
+  path={`/notes/${note.id}/`}
+  type="article"
+  publishedTime={pubDate}
+  modifiedTime={updatedDate}
+  breadcrumbs={[{ name: 'Notes', path: '/notes/' }, { name: title, path: `/notes/${note.id}/` }]}
+  schema={articleSchema({ title, description, path: `/notes/${note.id}/`, pubDate, updatedDate, tags, category })}
+>
   <article class="wrap prose" style="padding-top:80px;">
     {
       isInsurance && (
         <p class="compliance-note">
-          本文為個人學習紀錄，非保險商品招攬。詳見 <a href="/disclaimer">免責聲明</a>。
+          本文為個人學習紀錄，非保險商品招攬。詳見 <a href="/disclaimer/">免責聲明</a>。
         </p>
       )
     }
 
     <p class="post-meta">
       <span class="tag">{category}</span>
-      {fmt(pubDate)}
-      {updatedDate && `・更新於 ${fmt(updatedDate)}`}
+      <time datetime={pubDate.toISOString().slice(0, 10)}>{fmt(pubDate)}</time>
+      {updatedDate && <>・更新於 <time datetime={updatedDate.toISOString().slice(0, 10)}>{fmt(updatedDate)}</time></>}
     </p>
     <h1>{title}</h1>
     {tags.length > 0 && <p class="post-meta">{tags.map((t) => <span class="tag">#{t}</span>)}</p>}
@@ -41,7 +51,7 @@ const fmt = (d: Date) =>
       <Content />
     </div>
 
-    <p style="margin-top:40px;"><a class="back-link" href="/notes">← 回 Notes 列表</a></p>
+    <p style="margin-top:40px;"><a class="back-link" href="/notes/">← 回 Notes 列表</a></p>
   </article>
 
   <FooterCTA variant="notes" />

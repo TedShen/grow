@@ -4,7 +4,7 @@ description: 個人學習紀錄。整理我在檢視保單時，重新釐清的�
 pubDate: 2026-09-01
 category: 保險學習
 tags: ['保單健檢']
-draft: false
+draft: true
 ---
 
 （這是一篇範例文章，用來驗證 notes 保險分類的合規處理，Ted 可依實際內容改寫。）

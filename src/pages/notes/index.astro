@@ -15,7 +15,8 @@ const fmt = (d: Date) =>
 <Base
   title="Notes ｜ Ted 財務教練"
   description="個人學習紀錄：能量學、軟體與工程、保險學習。工程師出身的財務教練的側寫。"
-  path="/notes"
+  path="/notes/"
+  breadcrumbs={[{ name: 'Notes', path: '/notes/' }]}
 >
   <section class="wrap" style="padding-top:80px;">
     <p class="zone-label">副線・個人學習紀錄</p>
@@ -26,7 +27,7 @@ const fmt = (d: Date) =>
       hasInsurance && (
         <p class="compliance-note">
           本區保險相關內容為個人學習紀錄，非保險商品招攬。詳見{' '}
-          <a href="/disclaimer">免責聲明</a>。
+          <a href="/disclaimer/">免責聲明</a>。
         </p>
       )
     }
@@ -37,7 +38,7 @@ const fmt = (d: Date) =>
           <p>紀錄即將發布。</p>
         ) : (
           notes.map((note) => (
-            <a href={`/notes/${note.id}`}>
+            <a href={`/notes/${note.id}/`}>
               <div>
                 <span class="tag">{note.data.category}</span>
                 {note.data.title}
