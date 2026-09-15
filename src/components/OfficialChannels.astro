@@ -2,7 +2,7 @@
 // src/components/OfficialChannels.astro
 // 官方管道與防冒用聲明
 // 用法：在 index.astro 或 about.astro 中 import 後放在頁尾 CTA 之前
-import { LINE_URL, THREADS_URL, INSTAGRAM_URL, EMAIL, SITE_URL } from '../consts';
+import { LINE_URL, THREADS_URL, INSTAGRAM_URL, EMAIL, SITE_URL, HUB_URL } from '../consts';
 ---
 
 <section class="wrap channels">
@@ -10,8 +10,9 @@ import { LINE_URL, THREADS_URL, INSTAGRAM_URL, EMAIL, SITE_URL } from '../consts
   <h2>我的官方管道</h2>
 
   <p class="channels-intro">
-    最近假冒財務顧問的詐騙變多了。以下是我唯一在使用的管道，
-    如果你在其他地方看到我的名字或照片，請先對照這裡。
+    最近假冒財務顧問的詐騙變多了。以下是我在財務教練這條線唯一使用的帳號，
+    其他線的帳號和完整總表在 <a href={HUB_URL} style="color:var(--brand);">tedshen.link</a>。
+    如果你在其他地方看到我的名字或照片，請先對照。
   </p>
 
   <ul class="channel-list">
@@ -20,6 +21,7 @@ import { LINE_URL, THREADS_URL, INSTAGRAM_URL, EMAIL, SITE_URL } from '../consts
     <li><span>Instagram</span><a href={INSTAGRAM_URL} rel="me">@tedshen.grow</a></li>
     <li><span>LINE 官方帳號</span><a href={LINE_URL}>加入好友</a></li>
     <li><span>Email</span><a href={`mailto:${EMAIL}`}>{EMAIL}</a></li>
+    <li><span>官方帳號總表</span><a href={HUB_URL}>{HUB_URL.replace('https://', '')}</a></li>
   </ul>
 
   <div class="never-box">
