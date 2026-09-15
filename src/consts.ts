@@ -20,6 +20,8 @@ export const EMAIL = 'ted@tedshen.link';
 
 // 官方身分頁（Person 實體的正本在那邊）
 export const HUB_URL = 'https://tedshen.link';
+// 軟體接案站
+export const DEV_URL = 'https://dev.tedshen.link';
 
 // 站主資料（JSON-LD Person / Article author 用）
 export const PERSON = {
@@ -27,5 +29,5 @@ export const PERSON = {
   alternateName: 'Ted Shen',
   jobTitle: '財務教練',
   image: '/avatar.jpg',
-  sameAs: [HUB_URL, THREADS_URL, INSTAGRAM_URL, LINE_URL],
+  sameAs: [HUB_URL, DEV_URL, THREADS_URL, INSTAGRAM_URL, LINE_URL],
 };
