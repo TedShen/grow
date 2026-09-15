@@ -23,7 +23,7 @@ const blog = defineCollection({
 const notes = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/notes' }),
   schema: base.extend({
-    category: z.enum(['能量學', '軟體與工程', '保險學習']),
+    category: z.enum(['身心靈成長', '軟體與工程', '保險學習']),
   }),
 });
 

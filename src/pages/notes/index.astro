@@ -15,12 +15,12 @@ const fmt = (d: Date) =>
 
 <Base
   title="Notes ｜ Ted 財務教練"
-  description="個人學習紀錄：能量學、軟體與工程、保險學習。工程師出身的財務教練的側寫。"
+  description="個人學習紀錄：身心靈成長、軟體與工程、保險學習。工程師出身的財務教練的側寫。"
   path="/notes/"
   breadcrumbs={[{ name: 'Notes', path: '/notes/' }]}
   schema={blogSchema({
     name: 'Notes ｜ Ted 財務教練',
-    description: '個人學習紀錄：能量學、軟體與工程、保險學習。工程師出身的財務教練的側寫。',
+    description: '個人學習紀錄：身心靈成長、軟體與工程、保險學習。工程師出身的財務教練的側寫。',
     path: '/notes/',
     posts: notes.map((n) => ({ title: n.data.title, description: n.data.description, path: `/notes/${n.id}/`, pubDate: n.data.pubDate, updatedDate: n.data.updatedDate })),
   })}
@@ -28,7 +28,7 @@ const fmt = (d: Date) =>
   <section class="wrap" style="padding-top:80px;">
     <p class="zone-label">副線・個人學習紀錄</p>
     <h1>Notes</h1>
-    <p class="lead" style="margin:12px 0 24px;">能量學・軟體與工程・保險學習</p>
+    <p class="lead" style="margin:12px 0 24px;">身心靈成長・軟體與工程・保險學習</p>
 
     {
       hasInsurance && (
