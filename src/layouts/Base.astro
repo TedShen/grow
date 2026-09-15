@@ -142,6 +142,21 @@ const schemas = [
       p { color: var(--muted); }
       .brand-tag { color: var(--brand); font-weight: 700; letter-spacing: 0.05em; }
 
+      /* 頂部導覽列 */
+      .topnav {
+        display: flex; align-items: center; justify-content: space-between; gap: 16px;
+        padding: 16px 24px; max-width: 680px; margin: 0 auto; flex-wrap: wrap;
+      }
+      .topnav .brand { color: var(--brand); font-weight: 800; letter-spacing: .05em; text-decoration: none; font-size: .95rem; }
+      .topnav ul { list-style: none; display: flex; gap: 6px; flex-wrap: wrap; }
+      .topnav a.item {
+        display: inline-block; padding: 8px 14px; border-radius: 999px;
+        color: var(--text); text-decoration: none; font-weight: 600; font-size: .95rem;
+        border: 1px solid transparent;
+      }
+      .topnav a.item:hover { background: var(--surface); border-color: var(--border); }
+      .topnav a.item.active { background: var(--surface); border-color: var(--border); color: var(--brand); }
+
       /* 按鈕 */
       .btn {
         display: inline-flex; align-items: center; gap: 8px;
@@ -154,7 +169,7 @@ const schemas = [
       .btn-ghost { background: transparent; color: var(--brand); border: 1.5px solid var(--brand); }
 
       /* Hero */
-      .hero { padding-top: 80px; text-align: center; }
+      .hero { padding-top: 48px; text-align: center; }
       .hero .avatar {
         width: 96px; height: 96px; border-radius: 50%;
         object-fit: cover; object-position: center 20%;
@@ -204,6 +219,9 @@ const schemas = [
       .posts a:hover { color: var(--brand); }
       .posts .date { color: var(--muted); font-size: .85rem; }
 
+      /* 首頁列表底下的入口按鈕 */
+      .entry-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+
       /* CTA 區塊 */
       .cta { text-align: center; background: var(--surface); border-radius: 24px; margin: 40px 0; padding: 48px 24px; }
       .cta h2 { margin-bottom: 12px; }
@@ -238,6 +256,15 @@ const schemas = [
     </style>
   </head>
   <body>
+    <nav class="topnav" aria-label="主導覽">
+      <a class="brand" href="/">GROW ｜ 財務教練</a>
+      <ul>
+        <li><a class={`item${path === '/' ? ' active' : ''}`} href="/">首頁</a></li>
+        <li><a class={`item${path.startsWith('/blog') ? ' active' : ''}`} href="/blog/">部落格</a></li>
+        <li><a class={`item${path.startsWith('/notes') ? ' active' : ''}`} href="/notes/">Notes</a></li>
+      </ul>
+    </nav>
+
     <slot />
 
     <footer class="wrap">

@@ -27,7 +27,7 @@ const fmt = (d: Date) =>
   breadcrumbs={[{ name: '部落格', path: '/blog/' }, { name: title, path: `/blog/${post.id}/` }]}
   schema={articleSchema({ title, description, path: `/blog/${post.id}/`, pubDate, updatedDate, tags, category })}
 >
-  <article class="wrap prose" style="padding-top:80px;">
+  <article class="wrap prose" style="padding-top:48px;">
     <p class="post-meta">
       <span class="tag">{category}</span>
       <time datetime={pubDate.toISOString().slice(0, 10)}>{fmt(pubDate)}</time>

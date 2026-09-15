@@ -30,7 +30,7 @@ const fmt = (d: Date) =>
   breadcrumbs={[{ name: 'Notes', path: '/notes/' }, { name: title, path: `/notes/${note.id}/` }]}
   schema={articleSchema({ title, description, path: `/notes/${note.id}/`, pubDate, updatedDate, tags, category })}
 >
-  <article class="wrap prose" style="padding-top:80px;">
+  <article class="wrap prose" style="padding-top:48px;">
     {
       isInsurance && (
         <p class="compliance-note">
