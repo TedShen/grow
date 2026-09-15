@@ -51,6 +51,14 @@ const fmt = (d: Date) =>
       <Content />
     </div>
 
+    {
+      isInsurance && (
+        <p class="compliance-note" style="margin-top:40px;">
+          這是我自己的學習筆記，不構成任何商品建議。有保險需求請洽你自己的業務員或各公司客服。
+        </p>
+      )
+    }
+
     <p style="margin-top:40px;"><a class="back-link" href="/notes/">← 回 Notes 列表</a></p>
   </article>
 
