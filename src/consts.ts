@@ -18,11 +18,14 @@ export const THREADS_URL = 'https://www.threads.com/@tedshen.grow';
 export const INSTAGRAM_URL = 'https://www.instagram.com/tedshen.grow';
 export const EMAIL = 'ted@tedshen.link';
 
+// 官方身分頁（Person 實體的正本在那邊）
+export const HUB_URL = 'https://tedshen.link';
+
 // 站主資料（JSON-LD Person / Article author 用）
 export const PERSON = {
   name: '沈裕德',
   alternateName: 'Ted Shen',
   jobTitle: '財務教練',
   image: '/avatar.jpg',
-  sameAs: [THREADS_URL, INSTAGRAM_URL, LINE_URL],
+  sameAs: [HUB_URL, THREADS_URL, INSTAGRAM_URL, LINE_URL],
 };

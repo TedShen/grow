@@ -1,6 +1,6 @@
 // JSON-LD 結構化資料產生器。每個函式回傳一個可直接 JSON.stringify 的物件，
 // 交給 Base.astro 的 schema prop 輸出。
-import { SITE_NAME, SITE_URL, SITE_DESCRIPTION, PERSON, EMAIL } from '../consts';
+import { SITE_NAME, SITE_URL, SITE_DESCRIPTION, PERSON, EMAIL, HUB_URL } from '../consts';
 
 const abs = (p: string) => new URL(p, SITE_URL).href;
 const withSlash = (p: string) => (p.endsWith('/') ? p : `${p}/`);
@@ -16,7 +16,9 @@ export function personSchema() {
     jobTitle: PERSON.jobTitle,
     description: SITE_DESCRIPTION,
     image: abs(PERSON.image),
-    url: SITE_URL,
+    // 正式身分頁在 tedshen.link，這裡的 Person 指回去讓 Google 合併成同一個實體
+    url: HUB_URL,
+    mainEntityOfPage: `${HUB_URL}/`,
     email: EMAIL,
     // 取自首頁服務區塊，不要寫網站上沒有的東西
     knowsAbout: ['財務規劃', '投資理財', '資產活化', '保障規劃', '危老都更', '土地開發合建'],
