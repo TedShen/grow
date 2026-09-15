@@ -22,6 +22,8 @@ export const EMAIL = 'ted@tedshen.link';
 export const HUB_URL = 'https://tedshen.link';
 // 軟體接案站
 export const DEV_URL = 'https://dev.tedshen.link';
+// 保險服務站（grow 的 Notes 不連過去，只在 Person.sameAs 宣告是同一個人）
+export const PROTECT_URL = 'https://protect.tedshen.link';
 
 // 站主資料（JSON-LD Person / Article author 用）
 export const PERSON = {
@@ -29,5 +31,5 @@ export const PERSON = {
   alternateName: 'Ted Shen',
   jobTitle: '財務教練',
   image: '/avatar.jpg',
-  sameAs: [HUB_URL, DEV_URL, THREADS_URL, INSTAGRAM_URL, LINE_URL],
+  sameAs: [HUB_URL, DEV_URL, PROTECT_URL, THREADS_URL, INSTAGRAM_URL, LINE_URL],
 };
