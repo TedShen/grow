@@ -15,7 +15,7 @@ export const SITE_DESCRIPTION =
 
 // Cloudflare Web Analytics beacon token。空字串 = 不輸出追蹤碼。
 // 啟用方式：Cloudflare 後台 → 該網域 → Analytics & Logs 拿到 token，貼進這裡即可，不用改版面。
-export const CLOUDFLARE_BEACON_TOKEN = '';
+export const CLOUDFLARE_BEACON_TOKEN = '98a611ce4b4747e9a78f1fc90ece2e28';
 
 // 官方社群管道（官方管道區塊與 JSON-LD Person.sameAs 共用，改這裡兩邊一起變）
 export const THREADS_URL = 'https://www.threads.com/@tedshen.grow';
