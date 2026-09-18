@@ -59,7 +59,7 @@ _backup/                  舊 index.html / CNAME 備份，已 gitignore，勿刪
 - 取資料：`getCollection('blog'/'notes')`，單篇 slug 用 **`entry.id`**（不是 `entry.slug`）；渲染用 `import { render } from 'astro:content'` + `await render(entry)` 取 `Content`
 - 列表／首頁一律過濾 `draft: true`；正式環境不上草稿
 - Slug 規則：**英文語意化、不放日期**（例 `house-construction-process`）。日期進 URL 會讓文章顯舊
-- 現有文章（截至 2026-09-18）：`blog/why-engineer-to-coach`、`blog/house-construction-process`、`notes/insurance-learning-note`
+- 現有文章（截至 2026-09-18）：`blog/why-engineer-to-coach`、`blog/house-construction-process`、`blog/idle-property-revitalization`、`notes/insurance-learning-note`
 
 ## 4. 硬性約束（不可違反，改壞會直接斷站或違規）
 
@@ -90,7 +90,7 @@ _backup/                  舊 index.html / CNAME 備份，已 gitignore，勿刪
 - [x] `/about` 頁（2026-09-18 已上線：`src/pages/about.astro`，品牌故事精簡版＋服務＋官方管道）
 - [ ] `drafts/software.astro` 軟體接案導流頁：2026-09-15 寫好暫緩。上線時搬回 `src/pages/`，並在 `Base.astro` 頁尾導覽加連結
 - [ ] 頭像換真實照片（現為 watermark 版 `avatar.jpg`）
-- [ ] 第一批主線文章：閒置房地活化、危老都更地主問建商問題、品牌故事（已發）；保單健檢類注意合規放 notes
+- [ ] 第一批主線文章：閒置房地活化（已發 2026-09-18）、品牌故事（已發）；危老都更地主問建商問題待寫；保單健檢類注意合規放 notes
 - [ ] 法遵確認：個人網站送審門檻、「財務教練」對外行銷素材可用性、富足家內容不重複原則（寫自己視角，結尾連回 everrich.vip）
 - [ ] 行銷節奏（FB/IG/Threads）、AdSense（等流量穩定再說）均未定，不要擅自加追蹤碼
 
@@ -130,6 +130,20 @@ _backup/                  舊 index.html / CNAME 備份，已 gitignore，勿刪
 ---
 
 ## 8. Work Log（按時間倒序，新紀錄加在最上面）
+
+### 2026-09-18 — 發布主線第三篇：閒置房地活化（作業人：AI 助手起草，Ted 定稿）
+- 動機：第一批主線文章（§6 待辦）
+- 變更：`src/content/blog/idle-property-revitalization.md`（`draft: false`）；分類 `資產活化`；`PROJECT.md` §3／§6 同步
+- 驗證：檢查清單全過——build 通過；頁面／sitemap（含 lastmod 2026-09-18，`/blog/` 自動跟著更新）／RSS 皆收錄；canonical、og:type=article、BlogPosting＋Organization publisher、內連五關舊文皆確認
+- 影響：新增公開 URL `/blog/idle-property-revitalization/`；everrich 連結未放（待 Ted 決定）
+- 後續待辦：下一篇候選「危老都更地主問建商問題」，可回連本篇合作段落
+
+### 2026-09-18 — 起草主線第三篇：閒置房地活化（作業人：AI 助手，Ted 定稿中）
+- 動機：第一批主線文章之「手上有閒置的房或地，可以怎麼活化」（§6 待辦）
+- 變更：新增 `src/content/blog/idle-property-revitalization.md`（`draft: true`，不上線）；分類 `資產活化`，內連五關舊文
+- 驗證：`npm run build` 通過（frontmatter schema 合法）；草稿未進 sitemap／dist／RSS
+- 影響：無（草稿不渲染）
+- 後續待辦：Ted 改寫定稿 → 翻 `draft: false` → 重跑檢查清單 → commit＋push；everrich 連結要不要放結尾待 Ted 決定
 
 ### 2026-09-18 — 更正 LINE 選單紀錄＋確認 beacon 開關為關閉（作業人：AI 助手）
 - 動機：Ted 確認選單上無「關於我」格，「改指 `/about/`」事項作廢；另確認 token 未貼時 beacon 零輸出屬正常
