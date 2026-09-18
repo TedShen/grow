@@ -30,7 +30,7 @@ interface BlogListInput {
   name: string;
   description: string;
   path: string;
-  posts: { title: string; description: string; path: string; pubDate: Date; updatedDate?: Date }[];
+  posts: { title: string; description: string; path: string; pubDate: Date; updatedDate?: Date; image?: string }[];
 }
 
 /** 文章列表頁（/blog/、/notes/）。列出旗下文章，讓 Google 知道這是一個內容集合。 */
@@ -50,6 +50,7 @@ export function blogSchema(b: BlogListInput) {
       '@type': 'BlogPosting',
       headline: p.title,
       description: p.description,
+      image: p.image ? abs(p.image) : abs('/og.jpg'),
       url: abs(withSlash(p.path)),
       datePublished: p.pubDate.toISOString(),
       dateModified: (p.updatedDate ?? p.pubDate).toISOString(),
@@ -92,6 +93,19 @@ export function articleSchema(a: ArticleInput) {
     name: PERSON.name,
     url: SITE_URL,
   };
+  // publisher 用 Organization＋logo，Google Article 富媒體結果才認得；author 維持 Person（站主本人）。
+  const publisher = {
+    '@type': 'Organization',
+    '@id': abs('/#publisher'),
+    name: SITE_NAME,
+    url: SITE_URL,
+    logo: {
+      '@type': 'ImageObject',
+      url: abs('/og.jpg'),
+      width: 1200,
+      height: 630,
+    },
+  };
   return {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
@@ -102,7 +116,7 @@ export function articleSchema(a: ArticleInput) {
     datePublished: a.pubDate.toISOString(),
     dateModified: (a.updatedDate ?? a.pubDate).toISOString(),
     author,
-    publisher: author,
+    publisher,
     isPartOf: { '@id': abs('/#website') },
     inLanguage: 'zh-Hant',
     ...(a.category ? { articleSection: a.category } : {}),

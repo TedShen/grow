@@ -12,15 +12,15 @@ const fmt = (d: Date) =>
 ---
 
 <Base
-  title="部落格 ｜ Ted 財務教練"
+  title="資產活化・財務規劃部落格 ｜ Ted 財務教練"
   description="資產活化、財務規劃——工程師出身的財務教練，寫給正在做決定的你。"
   path="/blog/"
   breadcrumbs={[{ name: '部落格', path: '/blog/' }]}
   schema={blogSchema({
-    name: '部落格 ｜ Ted 財務教練',
+    name: '資產活化・財務規劃部落格 ｜ Ted 財務教練',
     description: '資產活化、財務規劃——工程師出身的財務教練，寫給正在做決定的你。',
     path: '/blog/',
-    posts: posts.map((p) => ({ title: p.data.title, description: p.data.description, path: `/blog/${p.id}/`, pubDate: p.data.pubDate, updatedDate: p.data.updatedDate })),
+    posts: posts.map((p) => ({ title: p.data.title, description: p.data.description, path: `/blog/${p.id}/`, pubDate: p.data.pubDate, updatedDate: p.data.updatedDate, image: p.data.cover })),
   })}
 >
   <section class="wrap" style="padding-top:48px;">

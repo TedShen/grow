@@ -1,0 +1,63 @@
+---
+import Base from '../layouts/Base.astro';
+import { LINE_URL } from '../consts';
+import OfficialChannels from '../components/OfficialChannels.astro';
+import { personSchema } from '../lib/schema';
+---
+
+<Base
+  title="關於我：軟體工程師出身的財務教練 ｜ Ted"
+  description="沈裕德 Ted，從軟體工程師到財務教練。不推銷，先陪你把資產活化、投資理財與整體財務看清楚。"
+  path="/about/"
+  breadcrumbs={[{ name: '關於我', path: '/about/' }]}
+  schema={personSchema()}
+>
+  <!-- ① 我是誰 -->
+  <header class="hero wrap">
+    <img class="avatar" src="/avatar.jpg" alt="沈裕德 Ted，財務教練" width="96" height="96" fetchpriority="high" />
+    <p class="brand-tag">ABOUT ｜ 關於我</p>
+    <h1>我是沈裕德 Ted<br />軟體工程師出身的財務教練</h1>
+    <p class="lead">不推銷，先陪你把整體財務看清楚，再決定下一步。</p>
+  </header>
+
+  <!-- ② 這條路怎麼走來的 -->
+  <section class="wrap prose">
+    <h2>這條路怎麼走來的</h2>
+    <p>
+      小時候想當商人，讓家裡環境好一些。長大後順著「男生讀理工」的路走，加上喜歡玩電腦，就這樣當了軟體工程師。
+    </p>
+    <p>
+      但大學時就對投資理財有興趣，玩過基金股票；工作後研究保單、考保險證照；也看過一輪房地產課程。當時缺的不是資金，是判斷力，和一個能陪我把整件事看清楚的人。
+    </p>
+    <p>
+      後來接觸富足家，接觸到需要平台對接的案子，才把這些線串起來：資產活化、投資理財、整體財務，其實是同一件事。
+    </p>
+    <p>
+      <a href="/blog/why-engineer-to-coach/">看完整故事：我為什麼從軟體工程師走到財務教練 →</a>
+    </p>
+  </section>
+
+  <!-- ③ 我現在做的事 -->
+  <section class="wrap">
+    <p class="zone-label">現在的服務</p>
+    <h2>我現在做的事</h2>
+    <ul class="pill-list">
+      <li>投資理財 & 財務諮商 — 目標和風險攤開，做你看得懂、睡得著的規劃</li>
+      <li>保障規劃 — 先檢視現有保障，找出缺口再補，不多買不亂買</li>
+      <li>資產活化 — 閒置房產／土地產生效益，危老都更・合建一對一談</li>
+    </ul>
+    <p class="zone-note"><a href="/#services" style="color:var(--brand);font-weight:600;">回首頁看完整服務介紹 →</a></p>
+  </section>
+
+  <!-- ④ 官方管道與防冒用聲明 -->
+  <OfficialChannels />
+
+  <!-- ⑤ CTA -->
+  <section class="wrap">
+    <div class="cta">
+      <h2>想聊聊你的狀況？</h2>
+      <p>第一次諮詢免費，一杯咖啡的時間把財務聊清楚。<br />沒有壓力，不聊也沒關係。</p>
+      <a class="btn btn-line" href={LINE_URL}>加 LINE 預約諮詢 →</a>
+    </div>
+  </section>
+</Base>

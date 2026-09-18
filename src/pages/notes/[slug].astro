@@ -11,7 +11,7 @@ export async function getStaticPaths() {
 
 const { note } = Astro.props;
 const { Content } = await render(note);
-const { title, description, pubDate, updatedDate, category, tags } = note.data;
+const { title, description, pubDate, updatedDate, category, tags, cover } = note.data;
 
 // 保險學習分類：頂端放合規聲明，且頁尾不放 LINE 招攬 CTA
 const isInsurance = category === '保險學習';
@@ -28,7 +28,7 @@ const fmt = (d: Date) =>
   publishedTime={pubDate}
   modifiedTime={updatedDate}
   breadcrumbs={[{ name: 'Notes', path: '/notes/' }, { name: title, path: `/notes/${note.id}/` }]}
-  schema={articleSchema({ title, description, path: `/notes/${note.id}/`, pubDate, updatedDate, tags, category })}
+  schema={articleSchema({ title, description, path: `/notes/${note.id}/`, pubDate, updatedDate, tags, category, image: cover })}
 >
   <article class="wrap prose" style="padding-top:48px;">
     {

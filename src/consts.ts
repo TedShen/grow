@@ -13,6 +13,10 @@ export const FORM_URL = 'https://forms.gle/GiRtwnPKxajizTHd6';
 export const SITE_DESCRIPTION =
   '沈裕德 Ted，軟體工程師出身的財務教練。不推銷，先陪你把資產活化、投資理財與整體財務看清楚，再決定下一步。';
 
+// Cloudflare Web Analytics beacon token。空字串 = 不輸出追蹤碼。
+// 啟用方式：Cloudflare 後台 → 該網域 → Analytics & Logs 拿到 token，貼進這裡即可，不用改版面。
+export const CLOUDFLARE_BEACON_TOKEN = '';
+
 // 官方社群管道（官方管道區塊與 JSON-LD Person.sameAs 共用，改這裡兩邊一起變）
 export const THREADS_URL = 'https://www.threads.com/@tedshen.grow';
 export const INSTAGRAM_URL = 'https://www.instagram.com/tedshen.grow';
