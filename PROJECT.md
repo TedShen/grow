@@ -75,7 +75,7 @@ _backup/                  舊 index.html / CNAME 備份，已 gitignore，勿刪
 6. **LINE／聯絡網址一律吃 `src/consts.ts` 常數**（build 時 render 進 `href`），不准在頁面 hardcode，也不准用 runtime JS 塞連結。`LINE_URL=https://lin.ee/TWsPv3R`，`FORM_URL=https://forms.gle/GiRtwnPKxajizTHd6`。
 7. **JSON-LD 改 `src/lib/schema.ts`＋`src/consts.ts`，不要各頁手刻**。`PERSON.sameAs` 目前含 HUB、DEV、PROTECT、Threads、IG、LINE；`knowsAbout` 必須是網站上實際有的服務，不可虛構。
 8. **RSS 只收 blog**。notes（含保險）不進主 feed。
-9. **LINE 圖文選單與網站路由連動**：左上「我的服務」→ `/#services`、右上「最新活動」→ 傳送文字觸發自動回應、左下「關於我」→ `/`（`/about/` 已上線，Ted 可進 LINE 後台改指 `/about/`，改完同步更新本條）、右下「我想諮詢」→ 問卷。改路由或錨點 `id` 時要同步更新選單。
+9. **LINE 圖文選單與網站路由連動**：左上「我的服務」→ `/#services`、右上「最新活動」→ 傳送文字觸發自動回應、右下「我想諮詢」→ 問卷；左下格待確認（舊紀錄寫「關於我」→ `/`，但 2026-09-18 Ted 確認現況選單上沒有此格，待對照後台重填）。`/about/` 上線與選單無關，不需改選單。改網站路由或錨點 `id` 時要同步更新選單。
 
 ## 5. 基礎設施速查
 
@@ -130,6 +130,13 @@ _backup/                  舊 index.html / CNAME 備份，已 gitignore，勿刪
 ---
 
 ## 8. Work Log（按時間倒序，新紀錄加在最上面）
+
+### 2026-09-18 — 更正 LINE 選單紀錄＋確認 beacon 開關為關閉（作業人：AI 助手）
+- 動機：Ted 確認選單上無「關於我」格，「改指 `/about/`」事項作廢；另確認 token 未貼時 beacon 零輸出屬正常
+- 變更：`PROJECT.md` §4.9（左下格改待確認，移除改選單註記）；未動程式碼
+- 驗證：`CLOUDFLARE_BEACON_TOKEN` 仍為空字串，`dist\index.html` 無 beacon——開關邏輯正常（有 token 才輸出）
+- 影響：無
+- 後續待辦：Ted 對照 LINE 後台，把四格實際對應貼回來填 §4.9；beacon 等 token 到手再按步驟啟用
 
 ### 2026-09-18 — Push SEO 修補批次（作業人：AI 助手）
 - 動機：推送 warnings＋opportunities 兩批修補與 `/about/` 新頁上線
