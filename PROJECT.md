@@ -123,6 +123,7 @@ _backup/                  舊 index.html / CNAME 備份，已 gitignore，勿刪
 ### 7.4 文章發布檢查清單（發文必跑）
 
 - [ ] frontmatter 齊全：`title`、`description`（手寫）、`pubDate`、`category`（只能用 §3 枚舉）、`tags`、`draft: false`
+- [ ] 外部連結原則：結尾 CTA 只留 LINE（不固定連 everrich.vip）；只有內文實質引用富足家資源時才連一次（自然錨文字）
 - [ ] slug 英文語意化；更名舊 slug 要在 `astro.config.mjs` 加 redirect
 - [ ] 保險主題 → 放 `notes` ＋合規聲明＋`variant="notes"`；非保險獲客文 → 放 `blog` ＋ `variant="blog"`
 - [ ] `npm run build` 通過，抽查 canonical／OG／sitemap／RSS 有收錄新文
@@ -130,6 +131,13 @@ _backup/                  舊 index.html / CNAME 備份，已 gitignore，勿刪
 ---
 
 ## 8. Work Log（按時間倒序，新紀錄加在最上面）
+
+### 2026-09-18 — 決議：拿掉「每篇結尾固定連 everrich.vip」（作業人：AI 助手建議，Ted 裁示）
+- 動機：舊規則（BLOG-TODO 富足家內容原則後半）的 SEO／行銷效益評估
+- 變更：§7.4 發文檢查清單加外部連結原則；BLOG-TODO 原文凍結不動（歷史文件，衝突以本文為準）
+- 驗證：實抓 everrich.vip 確認——Shopline 商城站、自有文章專欄、獨立 LINE（@rpm4922h，非 grow 的 LINE）
+- 影響：已發三篇維持不連；未來只在實質引用時連
+- 後續待辦：無
 
 ### 2026-09-18 — 發布主線第三篇：閒置房地活化（作業人：AI 助手起草，Ted 定稿）
 - 動機：第一批主線文章（§6 待辦）
