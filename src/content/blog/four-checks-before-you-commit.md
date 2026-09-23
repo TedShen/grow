@@ -4,7 +4,7 @@ description: 不是「不要貪小便宜」那種話。這四個方法看的是�
 pubDate: 2026-09-23
 category: 財務規劃
 tags: ["防詐", "風險判斷", "合約"]
-draft: false
+draft: true
 ---
 
 大部分的防詐文章都在教你辨認話術：保證獲利、限時名額、催你快點決定。
