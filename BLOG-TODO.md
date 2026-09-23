@@ -105,7 +105,7 @@ Astro 7 已初始化並上線。Step 1–7 骨架全部完成：
    - Footer CTA 做成元件，用 prop 控制：`variant="blog"` 顯示 LINE CTA，`variant="notes"` 只顯示回列表 / RSS
    - `/notes` 保險分類的列表頁與文章頁頂端各放一行：「本區為個人學習紀錄，非保險商品招攬」，連到 `/disclaimer`
    - 寫作原則：寫「我學到什麼」不寫「你應該買什麼」；不提具體商品名稱、保費數字、各家比較
-   - 待辦：向所屬公司法遵確認個人網站的送審門檻
+   - ✅ 已向公司確認（2026-09-15，正遠保險經紀人）：不放公司 logo 就不需送審，寫登錄資訊即可。正式的保險服務站另開在 protect.tedshen.link，grow 的 /notes 維持純學習紀錄、不連過去。
 
 4. **LINE 網址寫成常數**
    現有 `index.html` 是用 runtime JS 把 `LINE_URL` 塞進 `[data-line-link]`（第 210–216 行）。轉 Astro 時改成 build 時直接 render 進 `href`，避免 JS 沒跑時按鈕變死連結。放 `src/consts.js`。
