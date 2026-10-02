@@ -101,4 +101,17 @@ export default defineConfig({
   redirects: {
     '/blog/house-construction-process_1': '/blog/house-construction-process/',
   },
+  // P 槽是 pCloud Drive，原生 watcher 會一直誤報 tsconfig 變更、dev 無限重啟。
+  // 改用 polling 並排除大目錄（2026-10-01 實測可行）。只影響 dev，build 不受影響。
+  // 已知限制：新增檔案偵測不到，新增文章或頁面後要重啟 dev；改既有檔案約 1–2 秒反映。
+  vite: {
+    server: {
+      watch: {
+        usePolling: true,
+        interval: 1000,
+        binaryInterval: 3000,
+        ignored: ['**/node_modules/**', '**/.astro/**', '**/dist/**', '**/.git/**'],
+      },
+    },
+  },
 });
