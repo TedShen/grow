@@ -1,0 +1,15 @@
+{
+  "slug": "taipei-zhongshan",
+  "district": "中山區",
+  "title": "臺北市中山區：新建執照、都更核定與人口老化｜你家這一帶",
+  "description": "臺北市中山區近 10 年 275 件新建執照、2021 年以來 26 件都更事業計畫核定、65 歲以上人口占 25.8%。整理自政府開放資料。",
+  "dateModified": "2026-10-02",
+  "isBasedOn": [
+    "https://data.gov.tw/dataset/128204",
+    "https://data.gov.tw/dataset/128200",
+    "https://data.gov.tw/dataset/8201",
+    "https://data.gov.tw/dataset/77132",
+    "https://data.gov.tw/dataset/157685",
+    "https://data.gov.tw/dataset/131734"
+  ]
+}

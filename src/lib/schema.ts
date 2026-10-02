@@ -123,3 +123,29 @@ export function articleSchema(a: ArticleInput) {
     ...(a.tags?.length ? { keywords: a.tags.join(', ') } : {}),
   };
 }
+
+interface AreaPageInput {
+  title: string;
+  description: string;
+  path: string;
+  dateModified: string;
+  isBasedOn: string[];
+}
+
+/** 〈你家這一帶〉區域頁：政府開放資料整理頁。isBasedOn 列出引用的 data.gov.tw 資料集。 */
+export function areaPageSchema(a: AreaPageInput) {
+  const url = abs(withSlash(a.path));
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': url,
+    url,
+    name: a.title,
+    description: a.description,
+    inLanguage: 'zh-Hant',
+    dateModified: a.dateModified,
+    isPartOf: { '@id': abs('/#website') },
+    author: { '@id': abs('/#person') },
+    isBasedOn: a.isBasedOn,
+  };
+}

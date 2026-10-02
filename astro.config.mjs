@@ -72,6 +72,7 @@ function buildLastmodMap() {
   for (const [urlPath, srcFile] of [
     ['/disclaimer/', 'src/pages/disclaimer.astro'],
     ['/about/', 'src/pages/about.astro'],
+    ['/area/taipei-zhongshan/', 'src/data/area/taipei-zhongshan.json'],
   ]) {
     try {
       map.set(urlPath, statSync(join(rootDir, srcFile)).mtime.toISOString().slice(0, 10));

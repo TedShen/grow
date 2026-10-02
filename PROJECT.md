@@ -24,6 +24,7 @@
 | `/blog/[slug]` | `src/pages/blog/[slug].astro` | 主線文章，頁尾 `FooterCTA variant="blog"`（有 LINE CTA） |
 | `/notes/` | `src/pages/notes/index.astro` | 副線列表；若有保險分類文章則顯示合規提示 |
 | `/notes/[slug]` | `src/pages/notes/[slug].astro` | 副線文章；`保險學習` 分類上下各放合規聲明，頁尾 `variant="notes"`（無招攬） |
+| `/area/taipei-zhongshan/` | `src/pages/area/taipei-zhongshan.astro` | 〈你家這一帶〉區域頁（政府開放資料：建照、都更、人口）。內容片段由 `taipei-redev` 產生，見 §3.1 |
 | `/disclaimer` | `src/pages/disclaimer.astro` | 免責聲明（保險／投資／外部連結） |
 | `/404` | `src/pages/404.astro` | 自訂 404（sitemap 自動排除，不用加 redirect） |
 | `/rss.xml` | `src/pages/rss.xml.js` | **只收 blog**，notes 不進主 feed |
@@ -44,6 +45,8 @@ src/lib/schema.ts         personSchema / websiteSchema / blogSchema / articleSch
 src/components/FooterCTA.astro        variant="blog" 有 LINE CTA；variant="notes" 無招攬
 src/components/OfficialChannels.astro 官方管道＋防冒用聲明（首頁引用）
 .github/workflows/deploy.yml          withastro/action 建置＋部署 Pages
+src/pages/area/*.astro    區域頁外殼：套 Base、填 LINE_URL、areaPageSchema
+src/data/area/<slug>.html 區域頁內容片段（產生器輸出，勿手改）＋ <slug>.json（title/description/資料集）
 drafts/                   不進 build 的草稿（見 §6）
 _backup/                  舊 index.html / CNAME 備份，已 gitignore，勿刪勿提交
 ```
@@ -60,6 +63,15 @@ _backup/                  舊 index.html / CNAME 備份，已 gitignore，勿刪
 - 列表／首頁一律過濾 `draft: true`；正式環境不上草稿
 - Slug 規則：**英文語意化、不放日期**（例 `house-construction-process`）。日期進 URL 會讓文章顯舊
 - 現有文章（截至 2026-09-18）：`blog/why-engineer-to-coach`、`blog/house-construction-process`、`blog/idle-property-revitalization`、`notes/insurance-learning-note`
+
+### 3.1 區域頁〈你家這一帶〉
+
+- 資料與產生器在姊妹專案 `P:\Claude_Project\dev\taipei-redev`（`README.md` 有重跑步驟與口徑）
+- 流程：`python scripts/build.py <原始資料>` → 每區寫 `notes/<slug>.html`（Ted 原創段落）→ `python scripts/make_page.py 中山區 taipei-zhongshan` → 把 `astro/<slug>.html`、`astro/<slug>.json` 複製到本專案 `src/data/area/` → 複製一份 `src/pages/area/taipei-zhongshan.astro` 改 import 檔名 → `astro.config.mjs` 靜態頁 lastmod 清單加一行
+- 片段裡 LINE 連結是 `__LINE_URL__` 佔位字，由 .astro 在 build 時換成 `consts.ts` 的 `LINE_URL`（§4.6）
+- CSS 全部限定在 `.area` 底下，不影響全站
+- **沒有 Ted 原創段落的區不上線**（AdSense「缺乏價值的內容」教訓）
+- 頁面不出現買房、房貸、轉貸、增貸，不談價格，不列實施者
 
 ## 4. 硬性約束（不可違反，改壞會直接斷站或違規）
 
@@ -92,6 +104,7 @@ _backup/                  舊 index.html / CNAME 備份，已 gitignore，勿刪
 - [ ] 頭像換真實照片（現為 watermark 版 `avatar.jpg`）
 - [ ] 第一批主線文章：閒置房地活化（已發 2026-09-18）、品牌故事（已發）；危老都更地主問建商問題待寫；保單健檢類注意合規放 notes
 - [ ] 法遵確認：個人網站送審門檻、「財務教練」對外行銷素材可用性、富足家內容不重複原則（寫自己視角，結尾連回 everrich.vip）
+- [ ] 〈你家這一帶〉：其他 11 區待 Ted 寫段落；`/area/` 入口頁待做（做好後區域頁麵包屑加上一層）
 - [ ] 行銷節奏（FB/IG/Threads）、AdSense（等流量穩定再說）均未定，不要擅自加追蹤碼
 
 ## 7. 未來作業紀錄規範（必讀必做）
@@ -131,6 +144,13 @@ _backup/                  舊 index.html / CNAME 備份，已 gitignore，勿刪
 ---
 
 ## 8. Work Log（按時間倒序，新紀錄加在最上面）
+
+### 2026-10-02 — 新增區域頁：臺北市中山區（作業人：AI 助手，Ted 撰寫判讀段落）
+- 動機：免費開放資料工具〈你家這一帶〉第一版上線
+- 變更：新增 `src/pages/area/taipei-zhongshan.astro`、`src/data/area/taipei-zhongshan.{html,json}`；`src/lib/schema.ts` 加 `areaPageSchema`；`astro.config.mjs` 靜態頁 lastmod 清單加區域頁；`urban-renewal-2027-deadline.md` 加一句內連到區域頁並設 `updatedDate: 2026-10-02`；本文 §1 路由、§2、§3.1、§6
+- 驗證：見本筆 commit 前的 `npm run build` 與本機預覽
+- 影響：新增公開 URL `/area/taipei-zhongshan/`（進 sitemap，不進 RSS）；危老文章 lastmod 更新
+- 後續待辦：其他區段落；`/area/` 入口頁；上線後到 Search Console 提交網址
 
 ### 2026-09-18 — BLOG-TODO 舊規則刪線作廢（作業人：AI 助手，Ted 裁示）
 - 動機：承上條決議，Ted 指示把舊規則拿掉

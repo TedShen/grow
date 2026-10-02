@@ -1,0 +1,22 @@
+---
+// 〈你家這一帶〉臺北市中山區。內容由 taipei-redev/scripts/make_page.py 產生到 src/data/area/，
+// 這裡只負責套 Base 版型、填 LINE_URL（hard rule：連結吃 consts）與 JSON-LD。不要直接改 HTML 片段，改產生器再重跑。
+import Base from '../../layouts/Base.astro';
+import { LINE_URL } from '../../consts';
+import { areaPageSchema } from '../../lib/schema';
+import body from '../../data/area/taipei-zhongshan.html?raw';
+import meta from '../../data/area/taipei-zhongshan.json';
+
+const path = `/area/${meta.slug}/`;
+const html = body.replaceAll('__LINE_URL__', LINE_URL);
+---
+
+<Base
+  title={meta.title}
+  description={meta.description}
+  path={path}
+  breadcrumbs={[{ name: `臺北市${meta.district}`, path }]}
+  schema={areaPageSchema({ title: meta.title, description: meta.description, path, dateModified: meta.dateModified, isBasedOn: meta.isBasedOn })}
+>
+  <Fragment set:html={html} />
+</Base>
