@@ -145,6 +145,14 @@ _backup/                  舊 index.html / CNAME 備份，已 gitignore，勿刪
 
 ## 8. Work Log（按時間倒序，新紀錄加在最上面）
 
+### 2026-11-02 — 發布指南：都更為什麼要那麼久（作業人：AI 助手，素材來自 Ted 的回答）
+- 動機：SEO 週報（GSC 10/24–10/30 grow 曝光 5→13，都更長尾文排名前 10）；A 線關鍵字「都更 為什麼那麼久」
+- 變更：新增 `src/content/blog/why-urban-renewal-takes-so-long.md`（`draft: false`，分類 `資產活化`）；內連 7599 指南
+- 內容依據：都市更新條例（113-11-13 修正）第 22、32、33、37、48、53 條，全國法規資料庫原文核對；Ted 的觀察只有兩句（前段整合最常卡、整合後公部門流程本來就比較久），文中標明為個人觀察
+- 驗證：`npm run build` 通過（14 頁）；sitemap、RSS 已收錄；canonical 正確
+- 影響：新增公開 URL `/blog/why-urban-renewal-takes-so-long/`
+- 後續待辦：上線後到 Search Console 要求建立索引（Ted 手動）
+
 ### 2026-10-02 — 新增區域頁：臺北市中山區（作業人：AI 助手，Ted 撰寫判讀段落）
 - 動機：免費開放資料工具〈你家這一帶〉第一版上線
 - 變更：新增 `src/pages/area/taipei-zhongshan.astro`、`src/data/area/taipei-zhongshan.{html,json}`；`src/lib/schema.ts` 加 `areaPageSchema`；`astro.config.mjs` 靜態頁 lastmod 清單加區域頁；`urban-renewal-2027-deadline.md` 加一句內連到區域頁並設 `updatedDate: 2026-10-02`；本文 §1 路由、§2、§3.1、§6
