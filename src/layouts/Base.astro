@@ -105,16 +105,21 @@ const schemas = [
       <script type="application/ld+json" set:html={JSON.stringify(s)} />
     ))}
 
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@700;900&display=swap" />
+
     <style is:global>
       :root {
-        --bg: #ffffff;
-        --surface: #f5f7f6;
-        --text: #1a2420;
-        --muted: #5c6b64;
-        --brand: #1f9d6b;      /* grow 綠 */
-        --brand-dark: #157a52;
+        --bg: #f7f5f0;         /* 米白 */
+        --surface: #efebe2;
+        --text: #1c2723;
+        --muted: #4a5853;
+        --brand: #1f5f4f;      /* grow 墨綠 */
+        --brand-dark: #1f3a34;
+        --gold: #8a5a0b;
         --line: #06c755;       /* LINE 官方綠 */
-        --border: #e2e8e4;
+        --border: #e4dfd3;
         --shadow: 0 4px 24px rgba(20, 60, 40, 0.08);
       }
       @media (prefers-color-scheme: dark) {
@@ -139,6 +144,11 @@ const schemas = [
         -webkit-font-smoothing: antialiased;
       }
       .wrap { max-width: 680px; margin: 0 auto; padding: 0 24px; }
+      /* 電腦版放寬：首頁與卡片列表用 1120px；長文維持 .wrap 680px */
+      .wrap-wide { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+      .grid-2 { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); }
+      .grid-3 { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); }
+      .serif { font-family: "Noto Serif TC", "Songti TC", serif; }
       section { padding: 56px 0; }
       h1 { font-size: 2rem; line-height: 1.3; letter-spacing: -0.01em; }
       h2 { font-size: 1.35rem; margin-bottom: 24px; }
@@ -148,7 +158,7 @@ const schemas = [
       /* 頂部導覽列 */
       .topnav {
         display: flex; align-items: center; justify-content: space-between; gap: 16px;
-        padding: 16px 24px; max-width: 680px; margin: 0 auto; flex-wrap: wrap;
+        padding: 16px 24px; max-width: 1120px; margin: 0 auto; flex-wrap: wrap;
       }
       .topnav .brand { color: var(--brand); font-weight: 800; letter-spacing: .05em; text-decoration: none; font-size: .95rem; }
       .topnav ul { list-style: none; display: flex; gap: 6px; flex-wrap: wrap; }
@@ -270,7 +280,7 @@ const schemas = [
 
     <slot />
 
-    <footer class="wrap">
+    <footer class="wrap-wide">
       <nav aria-label="網站導覽" style="margin-bottom:12px;">
         <a href="/">首頁</a> · <a href="/about/">關於我</a> · <a href="/blog/">部落格</a> · <a href="/notes/">Notes</a> · <a href="/disclaimer/">免責聲明</a>
       </nav>
