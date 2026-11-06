@@ -145,6 +145,13 @@ _backup/                  舊 index.html / CNAME 備份，已 gitignore，勿刪
 
 ## 8. Work Log（按時間倒序，新紀錄加在最上面）
 
+### 2026-11-06 — 三篇都更文章互加內部連結（作業人：AI 助手，Ted 同意）
+- 動機：SEO 日報 11/06（GSC 10/28–11/03 grow 曝光 3→18，〈2027 都更期限〉排名 5.4）；讓新文〈都更為什麼要那麼久〉從已有曝光的頁面被找到
+- 變更：`src/content/blog/taipei-7599-public-urban-renewal.md`（「三條路」段後加一段，連 why-urban-renewal-takes-so-long、urban-renewal-2027-deadline）；`urban-renewal-2027-deadline.md`（「所以該做什麼」第二點後加一句連 why-urban-renewal-takes-so-long）；`why-urban-renewal-takes-so-long.md`（「等待的時候」加一點連 urban-renewal-2027-deadline）
+- 驗證：見 commit 前 `npm run build`
+- 影響：SEO 內部連結；無新 URL、無合規變更
+- 後續待辦：無
+
 ### 2026-11-02 — 發布指南：都更為什麼要那麼久（作業人：AI 助手，素材來自 Ted 的回答）
 - 動機：SEO 週報（GSC 10/24–10/30 grow 曝光 5→13，都更長尾文排名前 10）；A 線關鍵字「都更 為什麼那麼久」
 - 變更：新增 `src/content/blog/why-urban-renewal-takes-so-long.md`（`draft: false`，分類 `資產活化`）；內連 7599 指南
