@@ -145,6 +145,13 @@ _backup/                  舊 index.html / CNAME 備份，已 gitignore，勿刪
 
 ## 8. Work Log（按時間倒序，新紀錄加在最上面）
 
+### 2026-11-09 — 安全性更新：astro 7.2.10 → 7.4.7、相依套件修補（作業人：AI 助手，Ted 同意）
+- 動機：npm audit 8 項（high 6、moderate 2），含 astro JSX／MDX XSS（GHSA-98hj-9722-w3j8）、View Transitions CSS 注入，以及 devalue、sharp、vite、undici、zod、smol-toml、source-map-js；都在 build／dev 期，線上是純靜態 HTML
+- 變更：`package.json`（astro ^7.4.7）、`package-lock.json`（npm audit fix，未用 --force，不跨大版本）
+- 驗證：`npm audit` 0 項；`npm run build` 通過（14 頁）
+- 影響：無內容、URL 或合規變更
+- 後續待辦：無
+
 ### 2026-11-06 — 三篇都更文章互加內部連結（作業人：AI 助手，Ted 同意）
 - 動機：SEO 日報 11/06（GSC 10/28–11/03 grow 曝光 3→18，〈2027 都更期限〉排名 5.4）；讓新文〈都更為什麼要那麼久〉從已有曝光的頁面被找到
 - 變更：`src/content/blog/taipei-7599-public-urban-renewal.md`（「三條路」段後加一段，連 why-urban-renewal-takes-so-long、urban-renewal-2027-deadline）；`urban-renewal-2027-deadline.md`（「所以該做什麼」第二點後加一句連 why-urban-renewal-takes-so-long）；`why-urban-renewal-takes-so-long.md`（「等待的時候」加一點連 urban-renewal-2027-deadline）
