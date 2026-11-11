@@ -145,6 +145,13 @@ _backup/                  舊 index.html / CNAME 備份，已 gitignore，勿刪
 
 ## 8. Work Log（按時間倒序，新紀錄加在最上面）
 
+### 2026-11-11 — 〈危老條例 2027 到期〉改 title／description（作業人：AI 助手，Ted 11/11 要求每天持續改善）
+- 動機：SEO 日報（GSC 10/12–11/08）此篇累計約 20 曝光、平均排名約 5、0 點擊；原標題「危老條例要修了：2027 年 5 月 31 日這條線，你在哪一邊？」沒有直接對到讀者搜尋的「危老 2027 到期／修法」
+- 變更：`src/content/blog/urban-renewal-2027-deadline.md` frontmatter title、description（只重排文中既有事實，沒有新增數字或說法）；URL 不變
+- 驗證：`npm run build` 通過
+- 影響：SEO；無新 URL、無合規變更
+- 後續待辦：約 2～3 週後（11/25～12/02）在 GSC 比較此頁 CTR，若排名明顯下滑就改回
+
 ### 2026-11-09 — 安全性更新：astro 7.2.10 → 7.4.7、相依套件修補（作業人：AI 助手，Ted 同意）
 - 動機：npm audit 8 項（high 6、moderate 2），含 astro JSX／MDX XSS（GHSA-98hj-9722-w3j8）、View Transitions CSS 注入，以及 devalue、sharp、vite、undici、zod、smol-toml、source-map-js；都在 build／dev 期，線上是純靜態 HTML
 - 變更：`package.json`（astro ^7.4.7）、`package-lock.json`（npm audit fix，未用 --force，不跨大版本）
