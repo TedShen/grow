@@ -145,6 +145,13 @@ _backup/                  舊 index.html / CNAME 備份，已 gitignore，勿刪
 
 ## 8. Work Log（按時間倒序，新紀錄加在最上面）
 
+### 2026-11-12 — 準備搬到 Cloudflare Pages：加 `.node-version`（作業人：AI 助手，Ted 指示「其他網站也搬」）
+- 動機：Ted 11/12 指示 dev 以外的站也從 GitHub Pages 搬到 Cloudflare Pages，之後 repo 改私有
+- 變更：新增 `.node-version`（22），讓 Cloudflare Pages build 用 Node 22；部署流程尚未切換（GitHub Pages 照常）
+- 驗證：`npm run build` 通過，`dist/404.html` 存在
+- 影響：無內容、URL 或合規變更
+- 後續待辦：建立 Cloudflare Pages 專案 → pages.dev 驗證 → 切自訂網域 → 移除 `deploy.yml`、更新 §5
+
 ### 2026-11-11 — 〈危老條例 2027 到期〉改 title／description（作業人：AI 助手，Ted 11/11 要求每天持續改善）
 - 動機：SEO 日報（GSC 10/12–11/08）此篇累計約 20 曝光、平均排名約 5、0 點擊；原標題「危老條例要修了：2027 年 5 月 31 日這條線，你在哪一邊？」沒有直接對到讀者搜尋的「危老 2027 到期／修法」
 - 變更：`src/content/blog/urban-renewal-2027-deadline.md` frontmatter title、description（只重排文中既有事實，沒有新增數字或說法）；URL 不變
