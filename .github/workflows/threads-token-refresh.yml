@@ -1,0 +1,31 @@
+name: Threads token refresh
+
+# Threads long-lived tokens expire after 60 days. Refresh every Monday
+# and write the new token back to the THREADS_ACCESS_TOKEN secret.
+# Needs a GH_PAT secret (fine-grained PAT on TedShen/grow with
+# "Secrets: read and write"). Without it, the job only warns.
+on:
+  schedule:
+    - cron: '0 2 * * 1'
+  workflow_dispatch:
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Refresh and store
+        env:
+          TOKEN: ${{ secrets.THREADS_ACCESS_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_PAT }}
+        run: |
+          if [ -z "$TOKEN" ]; then echo "::warning::THREADS_ACCESS_TOKEN not set"; exit 0; fi
+          res=$(curl -sS "https://graph.threads.net/refresh_access_token?grant_type=th_refresh_token&access_token=$TOKEN")
+          new=$(echo "$res" | jq -r '.access_token // empty')
+          if [ -z "$new" ]; then echo "::error::refresh failed: $(echo "$res" | jq -c '.error // .')"; exit 1; fi
+          echo "::add-mask::$new"
+          echo "Refreshed; expires_in=$(echo "$res" | jq -r .expires_in)s"
+          if [ -z "$GH_TOKEN" ]; then
+            echo "::warning::GH_PAT not set: new token not saved. Ted must renew THREADS_ACCESS_TOKEN by hand before it expires."
+            exit 0
+          fi
+          gh secret set THREADS_ACCESS_TOKEN --repo "$GITHUB_REPOSITORY" --body "$new"

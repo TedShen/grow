@@ -1,0 +1,49 @@
+name: Threads daily post
+
+# Every day 09:00 Asia/Taipei (01:00 UTC). Posts threads/queue/<today>.md
+# if Ted approved it, otherwise an approved evergreen post. Drafts are
+# never posted. Can also be run by hand (dry run by default).
+on:
+  schedule:
+    - cron: '0 1 * * *'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Only print what would be posted'
+        type: boolean
+        default: true
+      date:
+        description: 'Override date (YYYY-MM-DD), optional'
+        required: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: threads-daily
+  cancel-in-progress: false
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Publish
+        env:
+          THREADS_ACCESS_TOKEN: ${{ secrets.THREADS_ACCESS_TOKEN }}
+          THREADS_USER_ID: ${{ secrets.THREADS_USER_ID }}
+          DRY_RUN: ${{ (github.event_name == 'workflow_dispatch' && inputs.dry_run) && '1' || '0' }}
+          DATE: ${{ inputs.date }}
+        run: node scripts/threads-publish.mjs
+      - name: Record what was posted
+        run: |
+          if [ -n "$(git status --porcelain threads)" ]; then
+            git config user.name "threads-bot"
+            git config user.email "threads-bot@users.noreply.github.com"
+            git add threads
+            git commit -m "Threads: posted $(TZ=Asia/Taipei date +%F) [skip ci]"
+            git push
+          fi
