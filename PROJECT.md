@@ -145,6 +145,13 @@ _backup/                  舊 index.html / CNAME 備份，已 gitignore，勿刪
 
 ## 8. Work Log（按時間倒序，新紀錄加在最上面）
 
+### 2026-11-18 — 〈危老條例 2027 到期〉內文加連結到〈台北公辦都更 7599〉（作業人：AI 助手，SEO 每日改善）
+- 動機：GSC index_inspect（11/18）〈台北公辦都更 7599〉為「已檢索－目前未建立索引」（上次檢索 11/02）；〈2027 到期〉是 grow 曝光最多的頁（11/09–11/15：9 曝光、平均排名 6.8），三篇都更文中只缺這條連結
+- 變更：`src/content/blog/urban-renewal-2027-deadline.md`「所以該做什麼」第二點加一句內部連結；title／description 不動（11/11 剛改，等數據）
+- 驗證：`npm run build` 通過；上線後開網址確認連結存在
+- 影響：SEO（內部連結）；無新 URL、無合規變更
+- 後續待辦：內部連結預期 1～3 週見效，12/09 用 index_inspect 看 7599 是否被索引
+
 ### 2026-11-12 — 準備搬到 Cloudflare Pages：加 `.node-version`（作業人：AI 助手，Ted 指示「其他網站也搬」）
 - 動機：Ted 11/12 指示 dev 以外的站也從 GitHub Pages 搬到 Cloudflare Pages，之後 repo 改私有
 - 變更：新增 `.node-version`（22），讓 Cloudflare Pages build 用 Node 22；部署流程尚未切換（GitHub Pages 照常）
