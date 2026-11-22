@@ -21,7 +21,7 @@ export function personSchema() {
     mainEntityOfPage: `${HUB_URL}/`,
     email: EMAIL,
     // 取自首頁服務區塊，不要寫網站上沒有的東西
-    knowsAbout: ['財務規劃', '投資理財', '資產活化', '保障規劃', '危老都更', '土地開發合建'],
+    knowsAbout: ['財務規劃', '投資理財', '資產活化', '保障規劃', '危老都更', '土地開發合建', '公辦都更', '閒置房產活化', '老屋改建流程'],
     sameAs: PERSON.sameAs,
   };
 }

@@ -145,6 +145,13 @@ _backup/                  舊 index.html / CNAME 備份，已 gitignore，勿刪
 
 ## 8. Work Log（按時間倒序，新紀錄加在最上面）
 
+### 2026-11-22 — 加 /llms.txt、/version.json，Person knowsAbout 補三個主題（作業人：AI 助手，Ted 11/22 要求學 houseguide.ai 的技術做法）
+- 動機：讓 ChatGPT、Claude、Perplexity 推薦時講得對；部署後能確認線上版本
+- 變更：新增 `src/pages/llms.txt.ts`（摘要、引用注意事項，自動列部落格、地區資料頁、學習筆記）、`src/pages/version.json.ts`（GitHub Actions 的 commit 編號與建置時間）；`src/lib/schema.ts` Person knowsAbout 加「公辦都更、閒置房產活化、老屋改建流程」（三篇既有文章的主題）
+- 驗證：`npm run build` 通過；dist 有 llms.txt 與 version.json，不在 sitemap
+- 影響：SEO／GEO；無新頁面、無合規變更（網站文案未動）
+- 後續待辦：無
+
 ### 2026-11-20 — 兩篇有曝光的都更文加連結到〈收到都更提案，怎麼確認是不是真的？〉（作業人：AI 助手，SEO 每日改善）
 - 動機：GSC index_inspect（11/20）新文 verify-urban-renewal-proposal 仍「Google 不認識」；目前只有 7599 文連過去。〈2027 到期〉（11/11–11/17：9 曝光、6.3 名）與〈都更為什麼要那麼久〉（3 曝光、10.7 名）是 grow 有曝光的頁
 - 變更：`urban-renewal-2027-deadline.md`「所以該做什麼」第二點、`why-urban-renewal-takes-so-long.md`「等待的時候」第一點各加一句內部連結；title／description 未動
