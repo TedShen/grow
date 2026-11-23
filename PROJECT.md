@@ -145,6 +145,13 @@ _backup/                  舊 index.html / CNAME 備份，已 gitignore，勿刪
 
 ## 8. Work Log（按時間倒序，新紀錄加在最上面）
 
+### 2026-11-23 — npm audit fix：fast-xml-parser（作業人：AI 助手，Ted 11/23 同意資安待辦）
+- 動機：npm audit 有 1 個 low（fast-xml-parser ≤ 5.11.2，建置期間接相依），資安日報 11/11 起列為待辦
+- 變更：只動 `package-lock.json`（npm audit fix，同大版本），package.json 未動
+- 驗證：npm audit 0；`npm run build` 通過；部署後首頁與文章頁正常
+- 影響：無（線上仍是純靜態 HTML，網站文案未動）
+- 後續待辦：無
+
 ### 2026-11-22 — 加 /llms.txt、/version.json，Person knowsAbout 補三個主題（作業人：AI 助手，Ted 11/22 要求學 houseguide.ai 的技術做法）
 - 動機：讓 ChatGPT、Claude、Perplexity 推薦時講得對；部署後能確認線上版本
 - 變更：新增 `src/pages/llms.txt.ts`（摘要、引用注意事項，自動列部落格、地區資料頁、學習筆記）、`src/pages/version.json.ts`（GitHub Actions 的 commit 編號與建置時間）；`src/lib/schema.ts` Person knowsAbout 加「公辦都更、閒置房產活化、老屋改建流程」（三篇既有文章的主題）
