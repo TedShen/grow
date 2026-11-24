@@ -145,6 +145,13 @@ _backup/                  舊 index.html / CNAME 備份，已 gitignore，勿刪
 
 ## 8. Work Log（按時間倒序，新紀錄加在最上面）
 
+### 2026-11-24 — 發布〈三個判斷方法，分辨一個案子能不能碰〉（作業人：AI 助手，Ted 11/24 要求修 404）
+- 動機：Threads 自動發文的第二則連到這篇，但它還是草稿（draft: true），網址 404。Ted 要求修正
+- 變更：`src/content/blog/three-checks-before-you-commit.md` draft 改 false、pubDate 改 2026-11-24（首次公開日）；內文未改
+- 驗證：`npm run build` 通過，dist 有該頁
+- 影響：新文章上線（防詐／風險判斷），進 sitemap 與 llms.txt
+- 後續待辦：threads-autopilot 的寫稿與發文前檢查加上連結存在檢查
+
 ### 2026-11-24 — 新增區域頁〈你家這一帶・臺北市北投區〉（作業人：AI 助手，Ted 11/24 同意 SEO 待辦）
 - 動機：成長計畫的「一個東西一頁」區域頁；Ted 11/23 回覆下一個區域頁候選北投、三重（三重屬新北，現有資料只涵蓋臺北市，先做北投）
 - 變更：`taipei-redev` 新增 `notes/taipei-beitou.html`（「這一區怎麼讀」，只依頁面上三份開放資料判讀：新建執照件數與戶數全市第 1、都更核定 2021 年以來 14 件排第 7、14 件全為民間自辦重建且集中在明德／奇岩／唭哩岸／復興崗站、老化比例最高的里；第三人稱，不寫成 Ted 的經驗）→ `make_page.py 北投區 taipei-beitou` → 複製到 `src/data/area/`；新增 `src/pages/area/taipei-beitou.astro`；`astro.config.mjs` lastmod 清單加北投；〈危老條例 2027 到期〉文末區域頁那句加北投連結；§2 檔案索引
