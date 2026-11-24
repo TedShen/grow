@@ -73,6 +73,7 @@ function buildLastmodMap() {
     ['/disclaimer/', 'src/pages/disclaimer.astro'],
     ['/about/', 'src/pages/about.astro'],
     ['/area/taipei-zhongshan/', 'src/data/area/taipei-zhongshan.json'],
+    ['/area/taipei-beitou/', 'src/data/area/taipei-beitou.json'],
   ]) {
     try {
       map.set(urlPath, statSync(join(rootDir, srcFile)).mtime.toISOString().slice(0, 10));

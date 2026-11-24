@@ -24,7 +24,7 @@
 | `/blog/[slug]` | `src/pages/blog/[slug].astro` | 主線文章，頁尾 `FooterCTA variant="blog"`（有 LINE CTA） |
 | `/notes/` | `src/pages/notes/index.astro` | 副線列表；若有保險分類文章則顯示合規提示 |
 | `/notes/[slug]` | `src/pages/notes/[slug].astro` | 副線文章；`保險學習` 分類上下各放合規聲明，頁尾 `variant="notes"`（無招攬） |
-| `/area/taipei-zhongshan/` | `src/pages/area/taipei-zhongshan.astro` | 〈你家這一帶〉區域頁（政府開放資料：建照、都更、人口）。內容片段由 `taipei-redev` 產生，見 §3.1 |
+| `/area/taipei-zhongshan/`、`/area/taipei-beitou/` | `src/pages/area/<slug>.astro` | 〈你家這一帶〉區域頁（政府開放資料：建照、都更、人口）。內容片段由 `taipei-redev` 產生，見 §3.1 |
 | `/disclaimer` | `src/pages/disclaimer.astro` | 免責聲明（保險／投資／外部連結） |
 | `/404` | `src/pages/404.astro` | 自訂 404（sitemap 自動排除，不用加 redirect） |
 | `/rss.xml` | `src/pages/rss.xml.js` | **只收 blog**，notes 不進主 feed |
@@ -144,6 +144,14 @@ _backup/                  舊 index.html / CNAME 備份，已 gitignore，勿刪
 ---
 
 ## 8. Work Log（按時間倒序，新紀錄加在最上面）
+
+### 2026-11-24 — 新增區域頁〈你家這一帶・臺北市北投區〉（作業人：AI 助手，Ted 11/24 同意 SEO 待辦）
+- 動機：成長計畫的「一個東西一頁」區域頁；Ted 11/23 回覆下一個區域頁候選北投、三重（三重屬新北，現有資料只涵蓋臺北市，先做北投）
+- 變更：`taipei-redev` 新增 `notes/taipei-beitou.html`（「這一區怎麼讀」，只依頁面上三份開放資料判讀：新建執照件數與戶數全市第 1、都更核定 2021 年以來 14 件排第 7、14 件全為民間自辦重建且集中在明德／奇岩／唭哩岸／復興崗站、老化比例最高的里；第三人稱，不寫成 Ted 的經驗）→ `make_page.py 北投區 taipei-beitou` → 複製到 `src/data/area/`；新增 `src/pages/area/taipei-beitou.astro`；`astro.config.mjs` lastmod 清單加北投；〈危老條例 2027 到期〉文末區域頁那句加北投連結；§2 檔案索引
+- 查證：危老條例修法 11/24 搜尋仍未見三讀通過（10/23 媒體仍寫申請至 2027/5/31），頁面「草案還在審議中」維持
+- 驗證：`npm run build` 通過；上線後開網址確認
+- 影響：新增公開 URL `/area/taipei-beitou/`（進 sitemap）。預期索引 1～4 週、曝光 2～6 週，2026-12-22 驗收
+- 後續待辦：資料（建照至 2026/8、都更至 2025/8）更新時重跑；三重要另找新北市開放資料
 
 ### 2026-11-23 — npm audit fix：fast-xml-parser（作業人：AI 助手，Ted 11/23 同意資安待辦）
 - 動機：npm audit 有 1 個 low（fast-xml-parser ≤ 5.11.2，建置期間接相依），資安日報 11/11 起列為待辦
