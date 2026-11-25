@@ -145,6 +145,13 @@ _backup/                  舊 index.html / CNAME 備份，已 gitignore，勿刪
 
 ## 8. Work Log（按時間倒序，新紀錄加在最上面）
 
+### 2026-11-25 — 〈台北公辦都更 7599〉改 title／description（作業人：AI 助手，SEO 排程每日改善）
+- 動機：GSC 10/26–11/22 此頁 12 曝光、0 點擊、平均 12.3 名；可見查詢為「7599」「7599專案」「7599懶人包」「都更7599」，原 title 沒有「專案」「懶人包」
+- 變更：`src/content/blog/taipei-7599-public-urban-renewal.md` title「台北公辦都更 7599 是什麼？三個階段、75% 和 90% 的門檻一次看懂」→「台北公辦都更 7599 專案懶人包：三個階段、75% 和 90% 門檻一次看懂」；description 開頭加「懶人包：」；內文與事實未改
+- 驗證：`npm run build` 通過；上線後開網址確認
+- 影響：SEO（title／description）；網址不變
+- 後續待辦：預期 Google 重新檢索後 1～3 週見效，2026-12-16 驗收（比改前 12 曝光、0 點擊、12.3 名）；12/16 前不要再改此頁 title／description
+
 ### 2026-11-24 — 發布〈三個判斷方法，分辨一個案子能不能碰〉（作業人：AI 助手，Ted 11/24 要求修 404）
 - 動機：Threads 自動發文的第二則連到這篇，但它還是草稿（draft: true），網址 404。Ted 要求修正
 - 變更：`src/content/blog/three-checks-before-you-commit.md` draft 改 false、pubDate 改 2026-11-24（首次公開日）；內文未改
