@@ -145,6 +145,13 @@ _backup/                  舊 index.html / CNAME 備份，已 gitignore，勿刪
 
 ## 8. Work Log（按時間倒序，新紀錄加在最上面）
 
+### 2026-11-26 — 中山區、北投區兩個區域頁互相加連結（作業人：AI 助手，SEO 排程每日改善）
+- 動機：北投區域頁（11/24 上線）GSC 網址審查仍「Google 不認識」；中山區域頁已有曝光，但兩頁之間沒有互連，北投只靠危老 2027 文一個入口
+- 變更：`src/data/area/taipei-zhongshan.html` #ted 段末加一句連到 `/area/taipei-beitou/`；`src/data/area/taipei-beitou.html` #ted 段末加一句連到 `/area/taipei-zhongshan/`；數字與內文未改
+- 驗證：`npm run build` 通過；上線後開網址確認
+- 影響：SEO（內部連結）；合規無
+- 後續待辦：預期 1～3 週內北投頁被檢索，12/17 用 index_inspect 驗收
+
 ### 2026-11-25 — 〈台北公辦都更 7599〉改 title／description（作業人：AI 助手，SEO 排程每日改善）
 - 動機：GSC 10/26–11/22 此頁 12 曝光、0 點擊、平均 12.3 名；可見查詢為「7599」「7599專案」「7599懶人包」「都更7599」，原 title 沒有「專案」「懶人包」
 - 變更：`src/content/blog/taipei-7599-public-urban-renewal.md` title「台北公辦都更 7599 是什麼？三個階段、75% 和 90% 的門檻一次看懂」→「台北公辦都更 7599 專案懶人包：三個階段、75% 和 90% 門檻一次看懂」；description 開頭加「懶人包：」；內文與事實未改
